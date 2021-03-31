@@ -1,9 +1,8 @@
-package com.ibm.bug.repo;
-
+package com.ibm.bug;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.ibm.bug.Bug;
 
 public interface BugRepository extends MongoRepository<Bug, String> {
 
-}
+	}
+
