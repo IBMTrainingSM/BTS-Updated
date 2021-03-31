@@ -16,6 +16,7 @@ public class Bug {
 	@NotNull
 	@NotBlank
 	private String priority;
+	@NotBlank
 	private String type;
 	@NotNull
 	@NotBlank
@@ -23,11 +24,14 @@ public class Bug {
 	@NotNull
 	@NotBlank
 	private String module;
+	@NotBlank
 	private String buildVersion;
+	@NotBlank
 	private String severity;
 	@NotNull
 	@NotBlank
 	private String projectId;
+	@NotBlank
 	private String developerId;
 	@NotNull
 	@NotBlank
