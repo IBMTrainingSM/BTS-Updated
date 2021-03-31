@@ -1,5 +1,6 @@
 package com.ibm.bug;
 
+	
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +16,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+
+@RestController
 public class BugController {
+
 	@Autowired
 	BugService bugService;
+	
+	
+
+
+
 	@PostMapping("/bug")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	String createBug(@RequestBody @Valid Bug bug,BindingResult bindingResult) {
@@ -29,6 +38,7 @@ public class BugController {
 		if (bindingResult.hasErrors()) {
 			throw new IllegalArgumentException("Somethign went wrong. Plesae retry");
 		}
+	}
 		
 	}
 	@GetMapping("/bug")
@@ -40,6 +50,13 @@ public class BugController {
 	Optional<Bug> getBug(@PathVariable("id") String bugId) {
 		return bugService.getBug(bugId);
 	}
-
+@PutMapping("/bug/{id}")
+	void updateOrder(@RequestBody @Valid Bug bug, BindingResult bindingResult,
+			@PathVariable("id") String bugId) {
+		validateModel(bindingResult);
+		System.out.println(bugId);
+		bug.setId(bugId);
+		bugService.updateProject(bug);
+	}
 
 }

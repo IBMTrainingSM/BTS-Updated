@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+	@Service
 public class BugService {
 	@Autowired
 	BugRepository bugRepository;
@@ -25,6 +25,9 @@ public class BugService {
 	public Optional<Bug> getBug(String bugId) {
 		return bugRepository.findById(bugId);
 	}
-
+public void updateProject(@Valid Bug bug) {
+		bugRepository.save(bug);
+		
+	}
 	
 }
