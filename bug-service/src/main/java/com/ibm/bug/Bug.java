@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 
@@ -14,19 +15,17 @@ public class Bug {
 	@NotBlank
 	private String name;
 	@NotNull
-	@NotBlank
 	private PRIORITY priority;
-	@NotBlank
+	@NotNull
 	private TYPE type;
 	@NotNull
-	@NotBlank
 	private STATUS status;
 	@NotNull
 	@NotBlank
 	private String module;
 	@NotBlank
 	private String buildVersion;
-	@NotBlank
+	@NotNull
 	private SEVERITY severity;
 	@NotNull
 	@NotBlank
@@ -44,9 +43,34 @@ public class Bug {
 	private String synopsis;
 	@NotNull
 	@NotBlank
+	@Size(min = 10, max = 100, message = "description must be between 10 to 100 character")
 	private String description;
 	private Date submittedOn;
 	
+	public PRIORITY getPriority() {
+		return priority;
+	}
+	public void setPriority(PRIORITY priority) {
+		this.priority = priority;
+	}
+	public TYPE getType() {
+		return type;
+	}
+	public void setType(TYPE type) {
+		this.type = type;
+	}
+	public STATUS getStatus() {
+		return status;
+	}
+	public void setStatus(STATUS status) {
+		this.status = status;
+	}
+	public SEVERITY getSeverity() {
+		return severity;
+	}
+	public void setSeverity(SEVERITY severity) {
+		this.severity = severity;
+	}
 	public String getId() {
 		return id;
 	}
@@ -73,30 +97,6 @@ public class Bug {
 		this.buildVersion = buildVersion;
 	}
 	
-	public PRIORITY getPriority() {
-		return priority;
-	}
-	public void setPriority(PRIORITY priority) {
-		this.priority = priority;
-	}
-	public TYPE getType() {
-		return type;
-	}
-	public void setType(TYPE type) {
-		this.type = type;
-	}
-	public STATUS getStatus() {
-		return status;
-	}
-	public void setStatus(STATUS status) {
-		this.status = status;
-	}
-	public SEVERITY getSeverity() {
-		return severity;
-	}
-	public void setSeverity(SEVERITY severity) {
-		this.severity = severity;
-	}
 	public String getProjectId() {
 		return projectId;
 	}
@@ -131,7 +131,7 @@ public class Bug {
 		return description;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.description = description.trim();
 	}
 	public Date getSubmittedOn() {
 		return submittedOn;
