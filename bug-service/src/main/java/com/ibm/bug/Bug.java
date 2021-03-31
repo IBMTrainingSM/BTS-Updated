@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 
@@ -41,9 +42,11 @@ public class Bug {
 	private String product;
 	@NotNull
 	@NotBlank
+	@Size(min=100, max=500, message="Synopsis should be between 100 and 500 characters")
 	private String synopsis;
 	@NotNull
 	@NotBlank
+	@Size(min=10 , max=100 , message="Description should be between 10 and 100 characters")
 	private String description;
 	private Date submittedOn;
 	
