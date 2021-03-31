@@ -15,19 +15,19 @@ public class Bug {
 	private String name;
 	@NotNull
 	@NotBlank
-	private String priority;
+	private PRIORITY priority;
 	@NotBlank
-	private String type;
+	private TYPE type;
 	@NotNull
 	@NotBlank
-	private String status;
+	private STATUS status;
 	@NotNull
 	@NotBlank
 	private String module;
 	@NotBlank
 	private String buildVersion;
 	@NotBlank
-	private String severity;
+	private SEVERITY severity;
 	@NotNull
 	@NotBlank
 	private String projectId;
@@ -59,24 +59,7 @@ public class Bug {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPriority() {
-		return priority;
-	}
-	public void setPriority(String priority) {
-		this.priority = priority;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 	public String getModule() {
 		return module;
 	}
@@ -89,10 +72,29 @@ public class Bug {
 	public void setBuildVersion(String buildVersion) {
 		this.buildVersion = buildVersion;
 	}
-	public String getSeverity() {
+	
+	public PRIORITY getPriority() {
+		return priority;
+	}
+	public void setPriority(PRIORITY priority) {
+		this.priority = priority;
+	}
+	public TYPE getType() {
+		return type;
+	}
+	public void setType(TYPE type) {
+		this.type = type;
+	}
+	public STATUS getStatus() {
+		return status;
+	}
+	public void setStatus(STATUS status) {
+		this.status = status;
+	}
+	public SEVERITY getSeverity() {
 		return severity;
 	}
-	public void setSeverity(String severity) {
+	public void setSeverity(SEVERITY severity) {
 		this.severity = severity;
 	}
 	public String getProjectId() {
