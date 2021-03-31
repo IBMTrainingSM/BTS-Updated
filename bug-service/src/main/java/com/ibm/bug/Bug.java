@@ -40,7 +40,7 @@ public class Bug {
 	private String product;
 	@NotNull
 	@NotBlank
-	@Size(min=100, max=500, message="Synopsis should be between 100 and 500 characters")
+	@Size(min=10, max=50, message="Synopsis should be between 10 and 50 characters")
 	private String synopsis;
 	@NotNull
 	@NotBlank
