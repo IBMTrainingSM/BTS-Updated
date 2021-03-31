@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+	@Service
 public class BugService {
 	@Autowired
 	BugRepository bugRepository;
@@ -25,4 +25,9 @@ public class BugService {
 		return bugRepository.findById(bugId);
 	}
 
+	public void updateProject(Bug bug) {
+		bugRepository.save(bug);
+		
+	}
+	
 }
