@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ProjectService {
 	@Autowired
 	ProjectRepository projectRepository;
-//	@Transactional
+
+	// @Transactional
 	public String createProject(@RequestBody Project project) {
 		Project projectsave = projectRepository.save(project);
 //		if(project != null)
@@ -33,4 +34,11 @@ public class ProjectService {
 
 	}
 
+	public ProjectRepository getProjectRepository() {
+		return projectRepository;
+	}
+
+	public void setProjectRepository(ProjectRepository projectRepository) {
+		this.projectRepository = projectRepository;
+	}
 }
