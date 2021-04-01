@@ -9,7 +9,7 @@ public class Employee {
 	private String name;
 	@NotNull
 	private String mail;
-	private int phoneNumber;
+	private float phoneNumber;
 	private TYPE type;
 	public String getName() {
 		return name;
@@ -23,10 +23,11 @@ public class Employee {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public int getPhoneNumber() {
+	
+	public float getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(float phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public TYPE getType() {
