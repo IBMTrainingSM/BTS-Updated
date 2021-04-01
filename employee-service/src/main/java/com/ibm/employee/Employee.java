@@ -16,7 +16,7 @@ public class Employee {
 	@NotNull
 	@Email
 	private String mail;
-	@Size(min = 10, max = 10, message = "phone number must be 10 digit")
+//	@Size(min = 10, max = 10, message = "phone number must be 10 digit")
 	private long phoneNumber;
 
 	public long getPhoneNumber() {
