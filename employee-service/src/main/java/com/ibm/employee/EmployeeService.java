@@ -12,6 +12,14 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+	public EmployeeRepository getEmployeeRepository() {
+		return employeeRepository;
+	}
+
+	public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+		this.employeeRepository = employeeRepository;
+	}
+
 	public String createEmployee(@RequestBody Employee employee) {
 		Employee employeesave = employeeRepository.save(employee);
 		return employeesave.getId();
