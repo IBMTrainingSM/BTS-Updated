@@ -15,5 +15,20 @@ class BugServiceTest {
 		String bugId = bugService.createBug(bug);
 		assertNotNull(bugId);
 	}
+	
+//	@Test
+//	void testGetBugs() {
+//		
+//	}
+//	
+//	@Test
+//	void testGetBug() {
+//		
+//	}
+//	
+//	@Test
+//	void testUpdateBug() {
+//		
+//	}
 
 }

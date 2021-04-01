@@ -37,7 +37,7 @@ public class BugController {
 	}
 
 	@GetMapping("/bug")
-	List<Bug> getBug() {
+	List<Bug> getBugs() {
 		return bugService.getBugs();
 	}
 
@@ -47,7 +47,7 @@ public class BugController {
 	}
 
 	@PutMapping("/bug/{id}")
-	void updateOrder(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
+	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
 		System.out.println(bugId);
 		bug.setId(bugId);
