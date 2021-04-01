@@ -13,6 +13,7 @@ public class Employee {
 	private String id;
 	@NotNull
 	private String mail;
+	
 	private long phoneNumber;
 
 	public long getPhoneNumber() {
@@ -35,12 +36,14 @@ public class Employee {
 		this.mail = mail;
 	}
 	
+	
 	public TYPE getType() {
 		return type;
 	}
 	public void setType(TYPE type) {
 		this.type = type;
 	}
+	
 	public String getId() {
 		return id;
 	}
