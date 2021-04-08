@@ -51,7 +51,7 @@ public class BugController {
 		validateModel(bindingResult);
 		System.out.println(bugId);
 		bug.setId(bugId);
-		bugService.updateProject(bug);
+		bugService.updateBug(bug);
 	}
 
 }
