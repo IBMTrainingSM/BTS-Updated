@@ -1,215 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bug Details</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        
-     body{ 
-   background-color:rgb(214, 221, 226);
-   }  
-     
-        h3{
-            text-align: center;
-        }
-        form{
-            width: 10%;
-            margin: 10px auto;
-        }
-        #searchBug{
-            display: block;
-            margin: 10px auto;
-        }
-        table{
-            margin-top: 50px;
-        }
-        h2
-{
-    color :black;
-    text-align : center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bug Details</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: rgb(214, 221, 226);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: -40px;
+      margin-bottom: 15px;
+    }
+
+    form {
+      width: 10%;
+      margin: 10px auto;
+    }
+
+    #searchBug {
+      display: block;
+      margin: 10px auto;
+    }
+
+    table {
+      margin-top: 50px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 20px;
+      margin-left: -90px;
+    }
+
+    .submitBtn {
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+
+    span {
+      color: red;
+      margin-left: 4px;
+    }
+  </style>
 </head>
+
 <body class="jumbotron">
-    <br><br>
-    <h2>BUG TRACKING SYSTEM</h2>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="aboutUs.html">About Us</a>
-              </li>
-          </ul>
-      </div>
+  <h1>BUG TRACKING SYSTEM</h1>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutUs.html">About Us</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
-    <div>
-        <h3>Bug Details</h3>
-    </div>
-    <br>
-    
-    <div class="container">
-      
-      <div class="row">
-        <div class="col">
-        <div class="form-group">
-          <label class="control-label col-sm-3  col-md-offset-2" for="Name">Name:</label>
-          
-          <div class="col-sm-5">
-            <input type="name" class="form-control" id="name" placeholder="Name" name="name">
-          </div>
-      
-        </div>
-      
-      
-      <div class="form-group">
-        <label class="control-label col-sm-3  col-md-offset-2" for="pwd">Priority:</label>
-    <div class="col-sm-5">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Priority
-           </button>
-        <select name="priority" id="priority">
-          <option value="LOW">Low</option>
-          <option value="MEDIUM">Medium</option>
-          <option value="HIGH">High</option>
-        </select>
-      </div>
-    </div>
-    
-    <div class="form-group">
-        <label class="control-label col-sm-3  col-md-offset-2 " for="pwd">Type:</label>
-    <div class="col-sm-5">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Type
-           </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Unit-Level</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">System Level</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Out of bound</a></li>
+  <div>
+    <h2>Bug Details</h2>
+  </div>
+  <br>
 
-        </ul>
-      </div>
-    </div>
-    <br>
-       
- 
+  <div class="container">
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4" for="Name">Name<span>*</span></label>
+
+          <div class="col-sm-9">
+            <input type="name" class="form-control" id="name" placeholder="Name" name="name" required>
+          </div>
+
+        </div>
         
-    <div class="form-group">
-        <label class="control-label col-sm-3  col-md-offset-2 " for="pwd">Status:</label>
-    <div class="col-sm-5">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Status
-           </button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">New</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Assigned</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Fixed</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pending</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Retest</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pending-retest</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Reopen</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Open</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Fixed</a></li>
 
-        </ul>
-      
-    </div>
-    </div>
- 
-    <br>
-   
-
-    <br>
         <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Module:</label>
-          <div class="col-sm-5">          
-            <input type="module" class="form-control" id="module" placeholder="Module" name="module">
+          <label class="control-label col-sm-3  col-md-offset-4" for="pwd">Priority</label>
+          <div class="col-sm-9">
+            <select name="priority" id="priority">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
           </div>
         </div>
-        <br>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Version:</label>
-          <div class="col-sm-5">          
-            <input type="buildversion" class="form-control" id="buildversion" placeholder="Build Version" name="buildversion">
-          </div>
-          </div>
- 
-   
-          <br>
-          
-          <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Severity:</label>
-        <div class="col-sm-5">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Severity
-               </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">LOW</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">MEDIUM</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HIGH</a></li>
-    
+       
+
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
+          <div class="col-sm-9">
+            <select name="type" id="type">
+              <option value="UNIT-LEVEL">UNIT-LEVEL</option>
+              <option value="SYSTEM-LEVEL">SYSTEM-LEVEL</option>
+              <option value="OUT OF OUND">OUT OF BOUND</option>
+            </select>
             </ul>
           </div>
         </div>
-        <br>
-      
        
-          <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Id:</label>
-          <div class="col-sm-5">          
+
+
+
+        <div class="form-group">
+          <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Status</label>
+          <div class="col-sm-9">
+            <select name="status" id="status">
+              <option value="NEW">NEW</option>
+              <option value="ASSIGNED">ASSIGNED</option>
+              <option value="FIXED">FIXED</option>
+              <option value="VERIFIED">VERIFIED</option>
+              <option value="RETEST">RETEST</option>
+              <option value="PENDING_RETEST">PENDING-RETEST</option>
+              <option value="REOPEN">REOPEN</option>
+              <option value="OPEN">OPEN</option>
+              <option value="CLOSED">CLOSE</option>
+              <option value="DEFERRED">DEFERRED</option>
+              <option value="REJECTED">REJECTED</option>
+              <option value="DUPLICATE">DUPLICATE</option>
+              <option value="NOT_A_BUG">NOT A BUG</option>
+            </select>
+          </div>
+        </div>
+
+      
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Module<span>*</span></label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="module" placeholder="Module" name="module" required>
+          </div>
+        </div>
+        
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Version</label>
+          <div class="col-sm-9">
+            <input type="buildversion" class="form-control" id="buildversion" placeholder="Build Version"
+              name="buildversion">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
+          <div class="col-sm-9">
+            <textarea id="my-textarea" class="form-control" name="" rows="2"></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col">
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Severity</label>
+          <div class="col-sm-9">
+            <select name="severity" id="severity">
+              <option value="LOW">LOW</option>
+              <option value="MEDIUM">MEDIUM</option>
+              <option value="HIGH">HIGH</option>
+            </select>
+
+          </div>
+        </div>
+       
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Project Id<span>*</span></label>
+          <div class="col-sm-9">
             <input type="projectid" class="form-control" id="projectid" placeholder="Project Id" name="projectid">
           </div>
-          </div>
-         
-          <br>
-          <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Description:</label>
-          <div class="col-sm-5">          
-            <input type="synopsis" class="form-control" id="synopsis" placeholder="Description" name="synopsis">
-          </div>
-          </div>
-      
-          <br>
-          <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product:</label>
-          <div class="col-sm-5">          
-            <input type="product" class="form-control" id="product" placeholder="Product" name="product">
-          
         </div>
-        </div>
+        
         <div class="form-group">
-            <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Submitted On:</label>
-            <div class="col-sm-5">    
-             <input id="DateCreditEarned" type="date"  class="form-control" />
-            </div>  
-            </div>
-        <br>
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Tester Id<span>*</span></label>
+          <div class="col-sm-9">
+            <input type="projectid" class="form-control" id="projectid" placeholder="Tester Id" name="projectid">
           </div>
-      </div>
-   
-        <br>
-        <br>
-        <br>
-        <div class="form-group">        
-          <div class="control-label col-sm-4 col-md-offset-5">
-            <button  onclick="location.href = 'Main.html';" type="Submit" class="btn btn-success">Submit</button>
-            
         </div>
+        
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
+          <div class="col-sm-9">
+            <textarea id="my-textarea" class="form-control" name="" rows="2"></textarea>
+          </div>
+        </div>
+       
+
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product<span>*</span></label>
+          <div class="col-sm-9">
+            <input type="product" class="form-control" id="product" placeholder="Product" name="product">
+
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Submitted On</label>
+          <div class="col-sm-9">
+            <input id="DateCreditEarned" type="date" class="form-control" />
+          </div>
+        </div>
+       
+      </div>
+    </div>
+    <div class="div">
+      <div class="col-sm-12">
+        <button onclick="location.href = 'Main.html';" type="Submit"
+          class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
+      </div>
       </form>
     </div>
-    
-    </body>
-    </html>
-    
-          
+
+</body>
+
+</html>
