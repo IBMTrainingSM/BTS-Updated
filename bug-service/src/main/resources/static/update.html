@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Bug</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        h1{
+            text-align: center;
+            margin-top: -40px;
+            margin-bottom: 15px;
+        }
+        h2{
+            text-align: center;
+        }
+        form{
+            width: 30%;
+            margin: 30px auto;
+        }
+        #updateBug{
+            display: block;
+            margin: 10px auto;
+        }
+        .bugUpdater{
+            margin-top: 20px;
+        }
+    </style>
+   
+</head>
+
+<body class="jumbotron">
+    <h1>
+        BUG TRACKING SYSTEM
+    </h1>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutUs.html">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="bugUpdater">
+        <h2>Update Bug</h2>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="bugId">Bug Id</label>
+            <input type="text" class="form-control" id="bugId">
+        </div>
+        <div class="form-group">
+            <label for="developerId">Developer Id</label>
+            <input type="text" class="form-control" id="developerId">
+        </div>
+        <div class="form-group">
+            <label for="sel1">Status</label>
+            <select class="form-control" id="sel1">
+                <option value="NEW">New</option>
+                <option value="ASSIGNED">Assigned</option>
+                <option value="OPEN">Open</option>
+                <option value="FIXED">Fixed</option>
+                <option value="PENDING_RETEST">Pending Retest</option>
+                <option value="RETEST">Retest</option>
+                <option value="REOPEN">Reopen</option>
+                <option value="VERIFIED">Verified</option>
+                <option value="CLOSED">Closed</option>
+                <option value="REJECTED">Rejected</option>
+                <option value="DUPLICATE">Duplicate</option>
+                <option value="DEFERRED">Deferred</option>
+                <option value="NOT_A_BUG">Not A Bug</option>
+            </select>
+        </div>
+        <div class="form-group">
+             </div>
+            <button onclick= alert1() type="button"id="updateBug" class="btn btn-success">Update</button>
+    </div> 
+    
+    </form>
+</div>
+</div>
+<script>
+    function alert1()
+    {
+      alert("Success!!Your Data has been Updated",'')
+    
+    }
+    </script>
+   
+
+</body>
+
+</html>
