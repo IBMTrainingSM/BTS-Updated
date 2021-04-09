@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,37 +10,47 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        *{
+        * {
             box-sizing: border-box;
         }
+
         h1 {
             text-align: center;
             margin-top: -40px;
             margin-bottom: 15px;
         }
-        h2{
+
+        h2 {
             text-align: center;
             margin-top: 20px;
         }
-        form{
+
+        form {
             width: 40%;
             margin: 30px auto;
         }
-        #bugId{
+
+        #bugId {
             padding: 0 50px;
             margin-right: 10px;
         }
-        .bugLabel{
+
+        .bugLabel {
             font-size: 20px;
             margin-right: -90px;
         }
-        table{
+
+        table {
             margin-top: 50px;
         }
-       
+        span{
+            color: red;
+            margin-left:3px;
+        }
     </style>
 </head>
-<body class="jumbotron" >
+
+<body class="jumbotron">
     <h1>
         BUG TRACKING SYSTEM
     </h1>
@@ -63,13 +74,14 @@
     </div>
     <form>
         <div class="form-group row">
-            <label for="bugId" class="col bugLabel">Bug Id</label>
-            <input type="text" class="form-control col" id="bugId">
-            <button type="button" id="searchBug" class="btn btn-primary col">Search</button>
+            <label for="bugId" class="col bugLabel">Bug Id<span>*</span></label>
+            <input type="text" class="form-control col" id='bugId' required>
+            <button type="button" id="searchBug" class="btn btn-primary col" onclick="getBug()">Search</button>
         </div>
     </form>
     <table class="table table-striped">
         <thead>
+            <th>Id</th>
             <th>Name</th>
             <th>Priority</th>
             <th>Type</th>
@@ -77,25 +89,49 @@
             <th>Synopsis</th>
             <th>Status</th>
         </thead>
-        <tbody>
-            <tr>
-                <td>Bug 1</td>
-                <td>High</td>
-                <td>Unit Level</td>
-                <td>v1.3.2</td>
-                <td>Infinite loop in method</td>
-                <td>New</td>
-            </tr>
-            <tr>
-                <td>Bug 2</td>
-                <td>Medium</td>
-                <td>System Level</td>
-                <td>v2.7.5</td>
-                <td>Method return incorrect value</td>
-                <td>Assigned</td>
-            </tr>
+        <tbody id="resultTable">
         </tbody>
     </table>
-    </div>
 </body>
+<script>
+    function getBug() {
+        let bugId = document.getElementById('bugId').value;
+        const promise = fetch('/bug/'+bugId);
+        promise.then(function (response) {
+            return response.json();
+        })
+            .then(function (bug) {
+                if(bug){
+                    const table = document.getElementById('resultTable');
+                const row = document.createElement('tr');
+                const idColumn = document.createElement('td');
+                const nameColumn = document.createElement('td');
+                const priorityColumn = document.createElement('td');
+                const typeColumn = document.createElement('td');
+                const buildVersionColumn = document.createElement('td');
+                const synopsisColumn = document.createElement('td');
+                const statusColumn = document.createElement('td');
+                idColumn.append(bug.id);
+                nameColumn.append(bug.name);
+                priorityColumn.append(bug.priority);
+                typeColumn.append(bug.type);
+                buildVersionColumn.append(bug.buildVersion);
+                synopsisColumn.append(bug.synopsis);
+                statusColumn.append(bug.status);
+                row.appendChild(idColumn);
+                row.appendChild(nameColumn);
+                row.appendChild(priorityColumn);
+                row.appendChild(typeColumn);
+                row.appendChild(buildVersionColumn);
+                row.appendChild(synopsisColumn);
+                row.appendChild(statusColumn);
+                table.appendChild(row);
+                }
+                else{
+                    alert("Invalid Bug Id");
+                }
+            });
+    }
+</script>
+
 </html>
