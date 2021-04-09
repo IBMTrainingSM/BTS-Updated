@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bug</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        h1 {
+            text-align: center;
+            margin-top: -40px;
+            margin-bottom: 15px;
+        }
+        h2{
+            text-align: center;
+            margin-top: 20px;
+        }
+        form{
+            width: 40%;
+            margin: 30px auto;
+        }
+        #bugId{
+            padding: 0 50px;
+            margin-right: 10px;
+        }
+        .bugLabel{
+            font-size: 20px;
+            margin-right: -90px;
+        }
+        table{
+            margin-top: 50px;
+        }
+       
+    </style>
+</head>
+<body class="jumbotron" >
+    <h1>
+        BUG TRACKING SYSTEM
+    </h1>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutUs.html">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <h2>Bugs</h2>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Priority</th>
+            <th>Type</th>
+            <th>Build Version</th>
+            <th>Synopsis</th>
+            <th>Status</th>
+        </thead>
+        <tbody id="resultTable">
+            
+        </tbody>
+    </table>
+    </div>
+</body>
+<script>
+    function getBugs(){
+		const promise = fetch('/bug');
+		promise.then(function(response){
+			return response.json();
+		})
+		.then(function(bugs){
+			const table = document.getElementById('resultTable');
+			for(let i=0;i<bugs.length;i++){
+				const currentBug = bugs[i];
+				const row = document.createElement('tr');
+				const idColumn = document.createElement('td');
+                const nameColumn = document.createElement('td');
+				const priorityColumn = document.createElement('td');
+				const typeColumn = document.createElement('td');
+				const buildVersionColumn = document.createElement('td');
+				const synopsisColumn = document.createElement('td');
+				const statusColumn = document.createElement('td');
+				idColumn.append(currentBug.id);
+				nameColumn.append(currentBug.name);
+                priorityColumn.append(currentBug.priority);
+                typeColumn.append(currentBug.type);
+				row.appendChild(idColumn);
+				row.appendChild(nameColumn);
+				row.appendChild(emailColumn);
+				row.appendChild(phoneNumberColumn);
+				table.appendChild(row);
+			}
+        })
+    }
+</script>
+</html>
