@@ -9,6 +9,34 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+	function save() {
+		
+	fetch('/bug', {
+			method:'POST',
+			headers: {
+			      'Content-Type': 'application/json'
+			    },
+			body : JSON.stringify({
+				name : document.getElementById('name').value,
+				priority : document.getElementById('priority').value,
+				type : document.getElementById('type').value,
+				status : document.getElementById('status').value,
+				module : document.getElementById('module').value,
+				buildVersion : document.getElementById('buildVersion').value,
+				description : document.getElementById('description').value,
+				severity : document.getElementById('severity').value,
+				projectId : document.getElementById('projectid').value,
+				testerId : document.getElementById('testerid').value,
+				synopsis : document.getElementById('synopsis').value,
+				product : document.getElementById('product').value,
+				submittedOn : document.getElementById('date').value,
+				
+		    })
+	});
+
+}
+</script>
   <style>
     body {
       background-color: rgb(214, 221, 226);
@@ -83,7 +111,7 @@
           <label class="control-label col-sm-3  col-md-offset-4" for="Name">Name<span>*</span></label>
 
           <div class="col-sm-9">
-            <input type="name" class="form-control" id="name" placeholder="Name" name="name" required>
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
           </div>
 
         </div>
@@ -105,11 +133,11 @@
           <label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
           <div class="col-sm-9">
             <select name="type" id="type">
-              <option value="UNIT-LEVEL">UNIT-LEVEL</option>
-              <option value="SYSTEM-LEVEL">SYSTEM-LEVEL</option>
-              <option value="OUT OF OUND">OUT OF BOUND</option>
+              <option value="UNITLEVEL">UNIT-LEVEL</option>
+              <option value="SYSTEMLEVEL">SYSTEM-LEVEL</option>
+              <option value="OUTOFBOUND">OUT OF BOUND</option>
             </select>
-            </ul>
+            
           </div>
         </div>
        
@@ -150,15 +178,15 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Version</label>
           <div class="col-sm-9">
-            <input type="buildversion" class="form-control" id="buildversion" placeholder="Build Version"
-              name="buildversion">
+            <input type="text" class="form-control" id="buildVersion" placeholder="Build Version"
+              name="buildVersion">
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
           <div class="col-sm-9">
-            <textarea id="my-textarea" class="form-control" name="" rows="2"></textarea>
+            <textarea id="description" class="form-control" name="descrption" rows="2"></textarea>
           </div>
         </div>
       </div>
@@ -181,21 +209,21 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Project Id<span>*</span></label>
           <div class="col-sm-9">
-            <input type="projectid" class="form-control" id="projectid" placeholder="Project Id" name="projectid">
+            <input type="text" class="form-control" id="projectid" placeholder="Project Id" name="projectId">
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Tester Id<span>*</span></label>
           <div class="col-sm-9">
-            <input type="projectid" class="form-control" id="projectid" placeholder="Tester Id" name="projectid">
+            <input type="text" class="form-control" id="testerid" placeholder="Tester Id" name="testerId">
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
           <div class="col-sm-9">
-            <textarea id="my-textarea" class="form-control" name="" rows="2"></textarea>
+            <textarea id="synopsis" class="form-control" name="synopsis" rows="2"></textarea>
           </div>
         </div>
        
@@ -203,7 +231,7 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product<span>*</span></label>
           <div class="col-sm-9">
-            <input type="product" class="form-control" id="product" placeholder="Product" name="product">
+            <input type="text" class="form-control" id="product" placeholder="Product" name="product">
 
           </div>
         </div>
@@ -211,7 +239,7 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Submitted On</label>
           <div class="col-sm-9">
-            <input id="DateCreditEarned" type="date" class="form-control" />
+            <input id="date" type="date" class="form-control" />
           </div>
         </div>
        
@@ -219,12 +247,12 @@
     </div>
     <div class="div">
       <div class="col-sm-12">
-        <button onclick="location.href = 'Main.html';" type="Submit"
-          class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
+        <button onclick="save()"  type="Submit"
+          class="btn btn-primary btn-lg btn-block submitBtn"> Submit </button>
       </div>
-      </form>
+    
     </div>
-
+</div>
 </body>
-
+ 
 </html>

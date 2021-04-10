@@ -30,8 +30,8 @@ public class Bug {
 	@NotNull
 	@NotBlank
 	private String projectId;
-	@NotBlank
-	private String developerId;
+//	@NotBlank
+//	private String developerId;
 	@NotNull
 	@NotBlank
 	private String testerId;
@@ -104,12 +104,12 @@ public class Bug {
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
-	public String getDeveloperId() {
-		return developerId;
-	}
-	public void setDeveloperId(String developerId) {
-		this.developerId = developerId;
-	}
+//	public String getDeveloperId() {
+//		return developerId;
+//	}
+//	public void setDeveloperId(String developerId) {
+//		this.developerId = developerId;
+//	}
 	public String getTesterId() {
 		return testerId;
 	}
