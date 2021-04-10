@@ -49,7 +49,6 @@ public class BugController {
 	@PutMapping("/bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
-		System.out.println(bugId);
 		bug.setId(bugId);
 		bugService.updateBug(bug);
 	}
