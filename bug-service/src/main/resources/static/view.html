@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bug</title>
+    <title>View Bugs</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -36,10 +36,9 @@
         table{
             margin-top: 50px;
         }
-       
     </style>
 </head>
-<body class="jumbotron" >
+<body class="jumbotron" onload="getBugs()">
     <h1>
         BUG TRACKING SYSTEM
     </h1>
@@ -58,9 +57,6 @@
             </ul>
         </div>
     </nav>
-    <div>
-        <h2>Bugs</h2>
-    </div>
     <table class="table table-striped">
         <thead>
             <th>Id</th>
@@ -72,7 +68,6 @@
             <th>Status</th>
         </thead>
         <tbody id="resultTable">
-            
         </tbody>
     </table>
     </div>
@@ -99,10 +94,16 @@
 				nameColumn.append(currentBug.name);
                 priorityColumn.append(currentBug.priority);
                 typeColumn.append(currentBug.type);
+                buildVersionColumn.append(currentBug.buildVersion);
+                synopsisColumn.append(currentBug.synopsis);
+                statusColumn.append(currentBug.status);
 				row.appendChild(idColumn);
 				row.appendChild(nameColumn);
-				row.appendChild(emailColumn);
-				row.appendChild(phoneNumberColumn);
+				row.appendChild(priorityColumn);
+				row.appendChild(typeColumn);
+				row.appendChild(buildVersionColumn);
+				row.appendChild(synopsisColumn);
+				row.appendChild(statusColumn);
 				table.appendChild(row);
 			}
         })
