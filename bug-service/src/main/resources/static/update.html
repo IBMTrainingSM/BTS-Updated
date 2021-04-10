@@ -10,27 +10,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        h1{
+        h1 {
             text-align: center;
             margin-top: -40px;
             margin-bottom: 15px;
         }
-        h2{
+
+        h2 {
             text-align: center;
         }
-        form{
+
+        form {
             width: 30%;
             margin: 30px auto;
         }
-        #updateBug{
+
+        #updateBug {
             display: block;
             margin: 10px auto;
         }
-        .bugUpdater{
+
+        .bugUpdater {
             margin-top: 20px;
         }
+
+        span {
+            color: red;
+            margin-left: 2px;
+        }
     </style>
-   
+
 </head>
 
 <body class="jumbotron">
@@ -52,22 +61,22 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="bugUpdater">
         <h2>Update Bug</h2>
     </div>
     <form>
         <div class="form-group">
-            <label for="bugId">Bug Id</label>
-            <input type="text" class="form-control" id="bugId">
+            <label for="bugId">Bug Id <span>*</span></label>
+            <input type="text" class="form-control" id='bugId' name="bugId">
         </div>
         <div class="form-group">
             <label for="developerId">Developer Id</label>
-            <input type="text" class="form-control" id="developerId">
+            <input type="text" class="form-control" id='developerId' name="developerId">
         </div>
         <div class="form-group">
-            <label for="sel1">Status</label>
-            <select class="form-control" id="sel1">
+            <label for="status">Status <span>*</span></label>
+            <select class="form-control" id='status' name="status">
                 <option value="NEW">New</option>
                 <option value="ASSIGNED">Assigned</option>
                 <option value="OPEN">Open</option>
@@ -84,22 +93,49 @@
             </select>
         </div>
         <div class="form-group">
-             </div>
-            <button onclick= alert1() type="button"id="updateBug" class="btn btn-success">Update</button>
-    </div> 
-    
-    </form>
-</div>
-</div>
-<script>
-    function alert1()
-    {
-      alert("Success!!Your Data has been Updated",'')
-    
-    }
-    </script>
-   
+        </div>
+        <button type="button" id="updateBug" class="btn btn-success" onclick="updateBugData()">Update</button>
+        </div>
 
+    </form>
 </body>
+<script>
+    function updateBugData() {
+        let bugId = document.getElementById('bugId').value;
+        const promise = fetch('/bug/'+bugId);
+        promise.then(function (response) {
+            return response.json();
+        })
+        .then(function (bug) {
+            if(bug){
+                update(bug);          
+            }
+            else{
+                alert("Invalid bugId")
+            }            
+        })
+    }
+    function update(bug){
+        let bugId = document.getElementById('bugId').value;
+        let developerId = document.getElementById('developerId').value;
+        let status = document.getElementById('status').value;
+        bug.status = status;
+        console.log(bug.id);
+        if(developerId){
+            bug.developerId = developerId;
+            bug.status = status;
+        }
+        else{
+            bug.status = status;    
+        }
+        const promise = fetch('/bug/'+bugId,{
+			method:'PUT',
+			headers:{
+				'Content-Type':'application/json'
+			},
+			body:JSON.stringify(bug)
+		});
+    }
+</script>
 
 </html>
