@@ -10,37 +10,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        * {
+       *{
             box-sizing: border-box;
         }
-
-        h1 {
+        h1{
             text-align: center;
-            margin-top: -40px;
-            margin-bottom: 15px;
         }
-
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        form {
+        form{
             width: 40%;
             margin: 30px auto;
         }
-
-        #bugId {
-            padding: 0 50px;
-            margin-right: 10px;
+        #bugId{
+            margin-right: 20px;
         }
-
-        .bugLabel {
+        .bugLabel{
+            margin-right: -40px;
             font-size: 20px;
-            margin-right: -90px;
         }
-
-        table {
+        table{
             margin-top: 50px;
         }
         span{
@@ -74,9 +61,9 @@
     </div>
     <form>
         <div class="form-group row">
-            <label for="bugId" class="col bugLabel">Bug Id<span>*</span></label>
-            <input type="text" class="form-control col" id='bugId' required>
-            <button type="button" id="searchBug" class="btn btn-primary col" onclick="getBug()">Search</button>
+            <label for="bugId" class="col-sm-3 bugLabel">Bug Id<span>*</span></label>
+            <input type="text" class="form-control col-sm-6" id='bugId' required>
+            <button type="button" id="searchBug" class="btn btn-primary col-sm-2" onclick="getBug()">Search</button>
         </div>
     </form>
     <table class="table table-striped">
