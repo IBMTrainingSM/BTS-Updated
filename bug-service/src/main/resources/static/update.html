@@ -92,27 +92,32 @@
                 <option value="NOT_A_BUG">Not A Bug</option>
             </select>
         </div>
-        <div class="form-group">
-        </div>
-        <button type="button" id="updateBug" class="btn btn-success" onclick="updateBugData()">Update</button>
-        
-
     </form>
+    <button type="button" id="updateBug" class="btn btn-primary" onclick="updateBugData()">Update</button>
 </body>
 <script>
     function updateBugData() {
     	if(!updateBugForm.checkValidity()){
-			alert('form is invalid');
+			alert('Bug id is invalid');
 			return;
 		}	
         let bugId = document.getElementById('bugId').value;
+        let developerId = document.getElementById('developerId').value;
+        if(developerId){
+        	developerId = developerId.trim();
+        	if(!developerId){
+        		alert("Invalid developer Id");
+        		return;
+        	}
+        }
         const promise = fetch('/bug/'+bugId);
         promise.then(function (response) {
             return response.json();
         })
         .then(function (bug) {
             if(bug){
-                update(bug);          
+                update(bug); 
+                alert("bug is updated");
             }
             else{
                 alert("Invalid bugId")
@@ -126,7 +131,7 @@
         bug.status = status;
         console.log(bug.id);
         if(developerId){
-            bug.developerId = developerId;
+        	bug.developerId = developerId;
             bug.status = status;
         }
         else{

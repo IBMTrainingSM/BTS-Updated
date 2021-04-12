@@ -15,6 +15,17 @@
 			alert('form is invalid');
 			return;
 		}	
+		let description = document.getElementById('description').value;
+		let synopsis = document.getElementById('synopsis').value;
+		if(50 < synopsis.length ||  synopsis.length < 10 ){
+			console.log("synopsis length=" +synopsis.length)
+			alert("Synopsis should be between 10 and 50 characters");
+			return;
+		}
+		if(100 < description.length || description.length < 10 ){
+			alert("Description should be between 10 and 100 characters");
+			return;
+		}
 		const promise = fetch('/bug', {
 			method:'POST',
 			headers: {
@@ -240,15 +251,9 @@
        
       </div>
     </div>
-    <div class="div">
-      <div class="col-sm-12">
-        <button onclick="save()"  type="Submit"
-          class="btn btn-primary btn-lg btn-block submitBtn"> Submit </button>
-      </div>
-    
-    </div>
 </div>
  </form>
+ <button onclick="save()"  type="Submit" class="btn btn-primary btn-lg btn-block submitBtn"> Submit </button>
 </body>
  
 </html>
