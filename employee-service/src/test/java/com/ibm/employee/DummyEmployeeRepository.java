@@ -42,8 +42,8 @@ public class DummyEmployeeRepository implements EmployeeRepository {
 
 	@Override
 	public Employee save(Employee employee) {
-//		employee.setId("afrteh243");
-		return null;
+	employee.setId("afrteh243");
+		return employee;
 	}
 
 	@Override
