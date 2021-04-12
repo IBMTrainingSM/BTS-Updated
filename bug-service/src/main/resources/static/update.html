@@ -65,10 +65,10 @@
     <div class="bugUpdater">
         <h2>Update Bug</h2>
     </div>
-    <form>
+    <form id="updateBugForm">
         <div class="form-group">
             <label for="bugId">Bug Id <span>*</span></label>
-            <input type="text" class="form-control" id='bugId' name="bugId">
+            <input type="text" class="form-control" id='bugId' name="bugId" required>
         </div>
         <div class="form-group">
             <label for="developerId">Developer Id</label>
@@ -92,23 +92,32 @@
                 <option value="NOT_A_BUG">Not A Bug</option>
             </select>
         </div>
-        <div class="form-group">
-        </div>
-        <button type="button" id="updateBug" class="btn btn-success" onclick="updateBugData()">Update</button>
-        </div>
-
     </form>
+    <button type="button" id="updateBug" class="btn btn-primary" onclick="updateBugData()">Update</button>
 </body>
 <script>
     function updateBugData() {
+    	if(!updateBugForm.checkValidity()){
+			alert('Bug id is invalid');
+			return;
+		}	
         let bugId = document.getElementById('bugId').value;
+        let developerId = document.getElementById('developerId').value;
+        if(developerId){
+        	developerId = developerId.trim();
+        	if(!developerId){
+        		alert("Invalid developer Id");
+        		return;
+        	}
+        }
         const promise = fetch('/bug/'+bugId);
         promise.then(function (response) {
             return response.json();
         })
         .then(function (bug) {
             if(bug){
-                update(bug);          
+                update(bug); 
+                alert("bug is updated");
             }
             else{
                 alert("Invalid bugId")
@@ -122,7 +131,7 @@
         bug.status = status;
         console.log(bug.id);
         if(developerId){
-            bug.developerId = developerId;
+        	bug.developerId = developerId;
             bug.status = status;
         }
         else{
