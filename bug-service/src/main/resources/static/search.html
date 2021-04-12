@@ -13,8 +13,13 @@
        *{
             box-sizing: border-box;
         }
-        h1,h2{
+        h1{
             text-align: center;
+      		margin-top: -40px;
+      		margin-bottom: 15px;
+        }
+        h2{
+        	text-align:center;
         }
         form{
             width: 40%;
@@ -33,6 +38,14 @@
         span{
             color: red;
             margin-left:3px;
+        }
+        .searchForm{
+        	width:50%;
+        	margin:0px auto;
+        }
+        .searchButton{
+        	height:60%;
+        	margin:auto 0px;
         }
     </style>
 </head>
@@ -59,13 +72,13 @@
     <div>
         <h2>Search Bug</h2>
     </div>
-    <form id="bugSearchForm">
-        <div class="form-group row">
-            <label for="bugId" class="col-sm-3 bugLabel">Bug Id<span>*</span></label>
-            <input type="text" class="form-control col-sm-6" id='bugId' required>
-            <button type="button" id="searchBug" class="btn btn-primary col-sm-2" onclick="getBug()">Search</button>
-        </div>
+    <div class="form-group row searchForm">
+    <form id="bugSearchForm" class="col-sm-9 row">
+            <label for="bugId" class="col-sm-4 bugLabel">Bug Id<span>*</span></label>
+            <input type="text" class="form-control col-sm-8" id='bugId' required>
     </form>
+    <button type="button" id="searchBug" class="btn btn-primary col-sm-3 searchButton" onclick="getBug()">Search</button>
+    </div>
     <table class="table table-striped">
         <thead>
             <th>Id</th>
@@ -83,45 +96,52 @@
 <script>
     function getBug() {
     	if(!bugSearchForm.checkValidity()){
-			alert('form is invalid');
+			alert('Bug id is invalid');
 			return;
 		}	
         let bugId = document.getElementById('bugId').value;
-        const promise = fetch('/bug/'+bugId);
-        promise.then(function (response) {
-            return response.json();
-        })
-            .then(function (bug) {
-                if(bug){
-                    const table = document.getElementById('resultTable');
-                const row = document.createElement('tr');
-                const idColumn = document.createElement('td');
-                const nameColumn = document.createElement('td');
-                const priorityColumn = document.createElement('td');
-                const typeColumn = document.createElement('td');
-                const buildVersionColumn = document.createElement('td');
-                const synopsisColumn = document.createElement('td');
-                const statusColumn = document.createElement('td');
-                idColumn.append(bug.id);
-                nameColumn.append(bug.name);
-                priorityColumn.append(bug.priority);
-                typeColumn.append(bug.type);
-                buildVersionColumn.append(bug.buildVersion);
-                synopsisColumn.append(bug.synopsis);
-                statusColumn.append(bug.status);
-                row.appendChild(idColumn);
-                row.appendChild(nameColumn);
-                row.appendChild(priorityColumn);
-                row.appendChild(typeColumn);
-                row.appendChild(buildVersionColumn);
-                row.appendChild(synopsisColumn);
-                row.appendChild(statusColumn);
-                table.appendChild(row);
-                }
-                else{
-                    alert("Invalid Bug Id");
-                }
-            });
+        bugId = bugId.trim();
+        if(bugId){
+        	const promise = fetch('/bug/'+bugId);
+            promise.then(function (response) {
+                return response.json();
+            })
+                .then(function (bug) {
+                    if(bug){
+                        const table = document.getElementById('resultTable');
+                    const row = document.createElement('tr');
+                    const idColumn = document.createElement('td');
+                    const nameColumn = document.createElement('td');
+                    const priorityColumn = document.createElement('td');
+                    const typeColumn = document.createElement('td');
+                    const buildVersionColumn = document.createElement('td');
+                    const synopsisColumn = document.createElement('td');
+                    const statusColumn = document.createElement('td');
+                    idColumn.append(bug.id);
+                    nameColumn.append(bug.name);
+                    priorityColumn.append(bug.priority);
+                    typeColumn.append(bug.type);
+                    buildVersionColumn.append(bug.buildVersion);
+                    synopsisColumn.append(bug.synopsis);
+                    statusColumn.append(bug.status);
+                    row.appendChild(idColumn);
+                    row.appendChild(nameColumn);
+                    row.appendChild(priorityColumn);
+                    row.appendChild(typeColumn);
+                    row.appendChild(buildVersionColumn);
+                    row.appendChild(synopsisColumn);
+                    row.appendChild(statusColumn);
+                    table.appendChild(row);
+                    }
+                    else{
+                        alert("Invalid Bug Id");
+                    }
+                });
+        }
+        else{
+        	alert("Invalid Bug Id");
+        }
+        
     }
 </script>
 
