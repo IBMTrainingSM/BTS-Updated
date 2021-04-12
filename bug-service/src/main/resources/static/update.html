@@ -65,10 +65,10 @@
     <div class="bugUpdater">
         <h2>Update Bug</h2>
     </div>
-    <form>
+    <form id="updateBugForm">
         <div class="form-group">
             <label for="bugId">Bug Id <span>*</span></label>
-            <input type="text" class="form-control" id='bugId' name="bugId">
+            <input type="text" class="form-control" id='bugId' name="bugId" required>
         </div>
         <div class="form-group">
             <label for="developerId">Developer Id</label>
@@ -95,12 +95,16 @@
         <div class="form-group">
         </div>
         <button type="button" id="updateBug" class="btn btn-success" onclick="updateBugData()">Update</button>
-        </div>
+        
 
     </form>
 </body>
 <script>
     function updateBugData() {
+    	if(!updateBugForm.checkValidity()){
+			alert('form is invalid');
+			return;
+		}	
         let bugId = document.getElementById('bugId').value;
         const promise = fetch('/bug/'+bugId);
         promise.then(function (response) {

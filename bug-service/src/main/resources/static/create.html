@@ -11,8 +11,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script type="text/javascript">
 	function save() {
-		
-	fetch('/bug', {
+		if(!createBugForm.checkValidity()){
+			alert('form is invalid');
+			return;
+		}	
+		const promise = fetch('/bug', {
 			method:'POST',
 			headers: {
 			      'Content-Type': 'application/json'
@@ -33,7 +36,7 @@
 				submittedOn : document.getElementById('date').value,
 		    })
 	});
-
+	alert("Bug is created");
 }
 </script>
   <style>
@@ -46,12 +49,6 @@
       margin-top: -40px;
       margin-bottom: 15px;
     }
-
-    form {
-      width: 10%;
-      margin: 10px auto;
-    }
-
     #searchBug {
       display: block;
       margin: 10px auto;
@@ -101,9 +98,9 @@
     <h2>Bug Details</h2>
   </div>
   <br>
-
+<form id="createBugForm">
   <div class="container">
-
+	
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -177,15 +174,14 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Version</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="buildVersion" placeholder="Build Version"
-              name="buildVersion">
+            <input type="text" class="form-control" id="buildVersion" placeholder="Build Version" name="buildVersion">
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
           <div class="col-sm-9">
-            <textarea id="description" class="form-control" name="descrption" rows="2"></textarea>
+            <textarea id="description" class="form-control" name="descrption" rows="2" required></textarea>
           </div>
         </div>
       </div>
@@ -208,21 +204,21 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Project Id<span>*</span></label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="projectid" placeholder="Project Id" name="projectId">
+            <input type="text" class="form-control" id="projectid" placeholder="Project Id" name="projectId" required>
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Tester Id<span>*</span></label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="testerid" placeholder="Tester Id" name="testerId">
+            <input type="text" class="form-control" id="testerid" placeholder="Tester Id" name="testerId" required>
           </div>
         </div>
         
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
           <div class="col-sm-9">
-            <textarea id="synopsis" class="form-control" name="synopsis" rows="2"></textarea>
+            <textarea id="synopsis" class="form-control" name="synopsis" rows="2" required></textarea>
           </div>
         </div>
        
@@ -230,7 +226,7 @@
         <div class="form-group">
           <label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product<span>*</span></label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="product" placeholder="Product" name="product">
+            <input type="text" class="form-control" id="product" placeholder="Product" name="product" required>
 
           </div>
         </div>
@@ -252,6 +248,7 @@
     
     </div>
 </div>
+ </form>
 </body>
  
 </html>
