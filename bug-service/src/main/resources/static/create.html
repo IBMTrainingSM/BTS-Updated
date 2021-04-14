@@ -16,12 +16,13 @@
 <script type="text/javascript">
 	function save() {
 		function success(response){
+			if(!response.ok){
+				alert('error happned');
+				return;
+			}
+			alert("Bug is created");
 			return response.json();
-			
 		} 
-		function errorHandler(error){
-			console.log(error);
-		}
 		const bugForm = document.getElementById('bugCreateForm');
 		
 		if(!bugForm.checkValidity()){
@@ -49,7 +50,7 @@
 				name : document.getElementById('name').value,
 				priority : document.getElementById('priority').value,
 				type : document.getElementById('type').value,
-				status : document.getElementById('status').value,
+				status : "NEW",
 				module : document.getElementById('module').value,
 				buildVersion : document.getElementById('buildVersion').value,
 				description : document.getElementById('description').value,
@@ -58,18 +59,15 @@
 				testerId : document.getElementById('testerid').value,
 				synopsis : document.getElementById('synopsis').value,
 				product : document.getElementById('product').value,
-				submittedOn : document.getElementById('date').value,
+				etaDate: document.getElementById('etaDate').value,
+				submittedOn : new Date(),
 			})
 		});
 		promise.then(success);
 		promise.then(function(data){
 			console.log(data);
 		});
-		promise.catch(function(error){
-			console.log(error);
-		});
-		alert("Bug is created");
-		return;
+		
 	}
 </script>
 <style>
@@ -162,23 +160,9 @@ span {
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Status</label>
+						<label class="control-label col-sm-3  col-md-offset-4 " for="pwd">ETA Date<span>*</span></label>
 						<div class="col-sm-9">
-							<select name="status" class="form-control" id="status">
-								<option value="NEW">NEW</option>
-								<option value="ASSIGNED">ASSIGNED</option>
-								<option value="FIXED">FIXED</option>
-								<option value="VERIFIED">VERIFIED</option>
-								<option value="RETEST">RETEST</option>
-								<option value="PENDING_RETEST">PENDING-RETEST</option>
-								<option value="REOPEN">REOPEN</option>
-								<option value="OPEN">OPEN</option>
-								<option value="CLOSED">CLOSE</option>
-								<option value="DEFERRED">DEFERRED</option>
-								<option value="REJECTED">REJECTED</option>
-								<option value="DUPLICATE">DUPLICATE</option>
-								<option value="NOT_A_BUG">NOT A BUG</option>
-							</select>
+							<input id="etaDate" type="date" class="form-control" />
 						</div>
 					</div>
 					<div class="form-group">
@@ -246,18 +230,11 @@ span {
 								placeholder="Product" name="product" required>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Submitted
-							On</label>
-						<div class="col-sm-9">
-							<input id="date" type="date" class="form-control" />
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
-		<button onclick="save()" type="Submit" class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
 	</form>
-	
+	<button onclick="save()" type="Submit" class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
 </body>
 </html>
