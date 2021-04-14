@@ -2,149 +2,169 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Bug</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        h1 {
-            text-align: center;
-            margin-top: -40px;
-            margin-bottom: 15px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Bug</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+h1 {
+	text-align: center;
+	margin-top: -40px;
+	margin-bottom: 15px;
+}
 
-        h2 {
-            text-align: center;
-        }
+h2 {
+	text-align: center;
+}
 
-        form {
-            width: 30%;
-            margin: 30px auto;
-        }
+form {
+	width: 30%;
+	margin: 30px auto;
+}
 
-        #updateBug {
-            display: block;
-            margin: 10px auto;
-        }
+#updateBug {
+	display: block;
+	margin: 10px auto;
+}
 
-        .bugUpdater {
-            margin-top: 20px;
-        }
+.bugUpdater {
+	margin-top: 20px;
+}
 
-        span {
-            color: red;
-            margin-left: 2px;
-        }
-    </style>
+span {
+	color: red;
+	margin-left: 2px;
+}
+footer {
+    position:relative;
+	bottom: 0;
+	left:50%;
+	transform:translateX(-50%);
+	height: 100px;
+}
+</style>
 
 </head>
 
 <body class="jumbotron">
-    <h1>
-        BUG TRACKING SYSTEM
-    </h1>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.html">About Us</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+	<h1>BUG TRACKING SYSTEM</h1>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="aboutUs.html">About
+						Us</a></li>
+			</ul>
+		</div>
+	</nav>
 
-    <div class="bugUpdater">
-        <h2>Update Bug</h2>
-    </div>
-    <form id="updateBugForm">
-        <div class="form-group">
-            <label for="bugId">Bug Id <span>*</span></label>
-            <input type="text" class="form-control" id='bugId' name="bugId" required>
-        </div>
-        <div class="form-group">
-            <label for="developerId">Developer Id</label>
-            <input type="text" class="form-control" id='developerId' name="developerId">
-        </div>
-        <div class="form-group">
-            <label for="status">Status <span>*</span></label>
-            <select class="form-control" id='status' name="status">
-                <option value="NEW">New</option>
-                <option value="ASSIGNED">Assigned</option>
-                <option value="OPEN">Open</option>
-                <option value="FIXED">Fixed</option>
-                <option value="PENDING_RETEST">Pending Retest</option>
-                <option value="RETEST">Retest</option>
-                <option value="REOPEN">Reopen</option>
-                <option value="VERIFIED">Verified</option>
-                <option value="CLOSED">Closed</option>
-                <option value="REJECTED">Rejected</option>
-                <option value="DUPLICATE">Duplicate</option>
-                <option value="DEFERRED">Deferred</option>
-                <option value="NOT_A_BUG">Not A Bug</option>
-            </select>
-        </div>
-    </form>
-    <button type="button" id="updateBug" class="btn btn-primary" onclick="updateBugData()">Update</button>
+	<div class="bugUpdater">
+		<h2>Update Bug</h2>
+	</div>
+	<form id="updateBugForm">
+		<div class="form-group">
+			<label for="bugId">Bug Id <span>*</span></label> <input type="text"
+				class="form-control" id='bugId' name="bugId" required>
+		</div>
+		<div class="form-group">
+			<label for="developerId">Developer Id</label> <input type="text"
+				class="form-control" id='developerId' name="developerId">
+		</div>
+		<div class="form-group">
+			<label for="status">Status <span>*</span></label> <select
+				class="form-control" id='status' name="status">
+				<option value="NEW">New</option>
+				<option value="ASSIGNED">Assigned</option>
+				<option value="OPEN">Open</option>
+				<option value="FIXED">Fixed</option>
+				<option value="PENDING_RETEST">Pending Retest</option>
+				<option value="RETEST">Retest</option>
+				<option value="REOPEN">Reopen</option>
+				<option value="VERIFIED">Verified</option>
+				<option value="CLOSED">Closed</option>
+				<option value="REJECTED">Rejected</option>
+				<option value="DUPLICATE">Duplicate</option>
+				<option value="DEFERRED">Deferred</option>
+				<option value="NOT_A_BUG">Not A Bug</option>
+			</select>
+		</div>
+	</form>
+	<button type="button" id="updateBug" class="btn btn-primary"
+		onclick="updateBugData()">Update</button>
+
+	<!-- Footer -->
+	<footer class="page-footer font-small blue">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">
+			© 2021 Copyright: <a href="http://localhost:8082/index.html">Bug Tracking
+				System </a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
 </body>
+
 <script>
-    function updateBugData() {
-    	if(!updateBugForm.checkValidity()){
+	function updateBugData() {
+		if (!updateBugForm.checkValidity()) {
 			alert('Bug id is invalid');
 			return;
-		}	
-        let bugId = document.getElementById('bugId').value;
-        let developerId = document.getElementById('developerId').value;
-        if(developerId){
-        	developerId = developerId.trim();
-        	if(!developerId){
-        		alert("Invalid developer Id");
-        		return;
-        	}
-        }
-        const promise = fetch('/bug/'+bugId);
-        promise.then(function (response) {
-            return response.json();
-        })
-        .then(function (bug) {
-            if(bug){
-                update(bug); 
-                alert("bug is updated");
-            }
-            else{
-                alert("Invalid bugId")
-            }            
-        })
-    }
-    function update(bug){
-        let bugId = document.getElementById('bugId').value;
-        let developerId = document.getElementById('developerId').value;
-        let status = document.getElementById('status').value;
-        bug.status = status;
-        console.log(bug.id);
-        if(developerId){
-        	bug.developerId = developerId;
-            bug.status = status;
-        }
-        else{
-            bug.status = status;    
-        }
-        const promise = fetch('/bug/'+bugId,{
-			method:'PUT',
-			headers:{
-				'Content-Type':'application/json'
+		}
+		let bugId = document.getElementById('bugId').value;
+		let developerId = document.getElementById('developerId').value;
+		if (developerId) {
+			developerId = developerId.trim();
+			if (!developerId) {
+				alert("Invalid developer Id");
+				return;
+			}
+		}
+		const promise = fetch('/bug/' + bugId);
+		promise.then(function(response) {
+			return response.json();
+		}).then(function(bug) {
+			if (bug) {
+				update(bug);
+				alert("bug is updated");
+			} else {
+				alert("Invalid bugId")
+			}
+		})
+	}
+	function update(bug) {
+		let bugId = document.getElementById('bugId').value;
+		let developerId = document.getElementById('developerId').value;
+		let status = document.getElementById('status').value;
+		bug.status = status;
+		console.log(bug.id);
+		if (developerId) {
+			bug.developerId = developerId;
+			bug.status = status;
+		} else {
+			bug.status = status;
+		}
+		const promise = fetch('/bug/' + bugId, {
+			method : 'PUT',
+			headers : {
+				'Content-Type' : 'application/json'
 			},
-			body:JSON.stringify(bug)
+			body : JSON.stringify(bug)
 		});
-    }
+	}
 </script>
 
 </html>

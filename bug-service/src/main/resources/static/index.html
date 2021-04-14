@@ -2,79 +2,105 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- <link rel="stylesheet" href="mystyle.css"> -->
-    <style>
-        h1 {
-            text-align: center;
-            margin-top: -40px;
-            margin-bottom: 15px;
-        }
-        .a{
-           margin-bottom: 20px;
-           text-align: center;
-        }
-        img{
-            width: 100%;
-            height: 75%;
-        }
-        .block{
-            margin-top: 30px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>main</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="mystyle.css"> -->
+<style>
+h1 {
+	text-align: center;
+	margin-top: -40px;
+	margin-bottom: 15px;
+}
+
+.a {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+img {
+	width: 100%;
+	height: 75%;
+}
+
+.block {
+	margin-top: 30px;
+}
+footer {
+    position:absolute;
+	bottom: 0;
+	left:50%;
+	transform:translateX(-50%);
+	height: 100px;
+}
+</style>
 </head>
 
 <body class="jumbotron">
-    <h1>
-        BUG TRACKING SYSTEM
-    </h1>
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="aboutUs.html">About Us</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="row">
-        <div class="col-sm-3 block">
-            <div class="a">
-                <a href="create.html" class="btn btn-success" role="button">Create Bug</a>
-            </div>
-            <img src="create.jpg" class="img-responsive">
-        </div>
-        <div class="col-sm-3 block">
-            <div class="a">
-                <a href="update.html" class="btn btn-danger" role="button">Update Bug</a>
-            </div>
-            <img src="update.png" class="img-responsive">
-        </div>
-        <div class="col-sm-3 block">
-            <div class="a">
-                <a href="search.html" class="btn btn-primary" role="button">Search Bug</a>
-            </div>
-            <img src="search.jpg" class="img-responsive">
-        </div>
-        <div class="col-sm-3 block">
-            <div class="a">
-                <a href="view.html" class="btn btn-info" role="button">View Bugs</a>
-            </div>
-            <img src="viewbug.jpg" class="img-responsive">
-        </div>
-    </div>
+	<h1>BUG TRACKING SYSTEM</h1>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="aboutUs.html">About
+						Us</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="row">
+		<div class="col-sm-3 block">
+			<div class="a">
+				<a href="create.html" class="btn btn-success" role="button">Create
+					Bug</a>
+			</div>
+			<img src="create.jpg" class="img-responsive">
+		</div>
+		<div class="col-sm-3 block">
+			<div class="a">
+				<a href="update.html" class="btn btn-danger" role="button">Update
+					Bug</a>
+			</div>
+			<img src="update.png" class="img-responsive">
+		</div>
+		<div class="col-sm-3 block">
+			<div class="a">
+				<a href="search.html" class="btn btn-primary" role="button">Search
+					Bug</a>
+			</div>
+			<img src="search.jpg" class="img-responsive">
+		</div>
+		<div class="col-sm-3 block">
+			<div class="a">
+				<a href="view.html" class="btn btn-info" role="button">View Bugs</a>
+			</div>
+			<img src="viewbug.jpg" class="img-responsive">
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer class="page-footer font-small blue">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">
+			© 2021 Copyright: <a href="http://localhost:8082/index.html">Bug Tracking
+				System </a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
 
 
 </body>
