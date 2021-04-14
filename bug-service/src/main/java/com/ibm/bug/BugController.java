@@ -32,7 +32,7 @@ public class BugController {
 
 	private void validateModel(Errors bindingResult) {
 		if (bindingResult.hasErrors()) {
-			throw new IllegalArgumentException("Somethign went wrong. Plesae retry");
+			throw new IllegalArgumentException("Something went wrong. Please retry");
 		}
 	}
 
