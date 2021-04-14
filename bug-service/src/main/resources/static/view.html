@@ -9,34 +9,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        *{
-            box-sizing: border-box;
-        }
-        h1 {
-            text-align: center;
-            margin-top: -40px;
-            margin-bottom: 15px;
-        }
-        h2{
-            text-align: center;
-            margin-top: 20px;
-        }
-        form{
-            width: 40%;
-            margin: 30px auto;
-        }
-        #bugId{
-            padding: 0 50px;
-            margin-right: 10px;
-        }
-        .bugLabel{
-            font-size: 20px;
-            margin-right: -90px;
-        }
-        table{
-            margin-top: 50px;
-        }
-    </style>
+* {
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+	margin-top: -40px;
+	margin-bottom: 15px;
+}
+
+h2 {
+	text-align: center;
+	margin-top: 20px;
+}
+
+form {
+	width: 40%;
+	margin: 30px auto;
+}
+
+#bugId {
+	padding: 0 50px;
+	margin-right: 10px;
+}
+
+.bugLabel {
+	font-size: 20px;
+	margin-right: -90px;
+}
+
+table {
+	margin-top: 50px;
+}
+
+footer {
+    position:relative;
+	bottom: 0;
+	left:50%;
+	transform:translateX(-50%);
+	height: 100px;
+}
+</style>
 </head>
 <body class="jumbotron" onload="getBugs()">
     <h1>
@@ -71,6 +85,18 @@
         </tbody>
     </table>
     </div>
+	<!-- Footer -->
+	<footer class="page-footer font-small blue">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">
+			© 2021 Copyright: <a href="http://localhost:8082/index.html">Bug Tracking
+				System </a>
+		</div>
+		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
 </body>
 <script>
     function getBugs(){
