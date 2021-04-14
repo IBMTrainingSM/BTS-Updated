@@ -15,19 +15,17 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function save() {
-		let name = document.getElementById('name').value;
-		if (!name.trim()) {
-			alert("Name is not filled");
-			return;
+		function success(response){
+			return response.json();
+			
+		} 
+		function errorHandler(error){
+			console.log(error);
 		}
-		let module = document.getElementById('module').value;
-		if (!module.trim()) {
-			alert("Module is not filled");
-			return;
-		}
-		let buildVersion = document.getElementById('buildVersion').value;
-		if (!buildVersion.trim()) {
-			alert("Version is empty");
+		const bugForm = document.getElementById('bugCreateForm');
+		
+		if(!bugForm.checkValidity()){
+			alert('form is invalid');
 			return;
 		}
 		let description = document.getElementById('description').value;
@@ -35,21 +33,7 @@
 			alert("Description should be between 10 and 100 characters");
 			return;
 		}
-		let projectId = document.getElementById('projectid').value;
-		if (!projectId.trim()) {
-			alert("ProjectId is empty");
-			return;
-		}
-		let testerId = document.getElementById('testerid').value;
-		if (!testerId.trim()) {
-			alert("TesterId is empty");
-			return;
-		}
-		let product = document.getElementById('product').value;
-		if (!product.trim()) {
-			alert("Product is not filled");
-			return;
-		}
+		
 		let synopsis = document.getElementById('synopsis').value;
 		if (50 < synopsis.length || synopsis.length < 10) {
 			console.log("synopsis length=" + synopsis.length)
@@ -76,6 +60,13 @@
 				product : document.getElementById('product').value,
 				submittedOn : document.getElementById('date').value,
 			})
+		});
+		promise.then(success);
+		promise.then(function(data){
+			console.log(data);
+		});
+		promise.catch(function(error){
+			console.log(error);
 		});
 		alert("Bug is created");
 		return;
@@ -139,7 +130,7 @@ span {
 		<h2>Bug Details</h2>
 	</div>
 	<br>
-
+	<form id="bugCreateForm">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -265,8 +256,8 @@ span {
 				</div>
 			</div>
 		</div>
+		<button onclick="save()" type="Submit" class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
+	</form>
 	
-	<button onclick="save()" type="Submit"
-		class="btn btn-primary btn-lg btn-block submitBtn">Submit</button>
 </body>
 </html>
