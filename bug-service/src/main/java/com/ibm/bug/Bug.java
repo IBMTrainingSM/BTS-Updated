@@ -45,8 +45,20 @@ public class Bug {
 	@NotBlank
 	@Size(min = 10, max = 100, message = "description must be between 10 to 100 character")
 	private String description;
+	@NotNull
 	private Date submittedOn;
+	@NotNull
+	private Date etaDate;
 	
+	public Date getEtaDate() {
+		return etaDate;
+	}
+	public void setEtaDate(Date etaDate) {
+		if(etaDate.compareTo(new Date())<0) {
+			throw new IllegalArgumentException("etaDate cannot be a past date");
+		}
+		this.etaDate = etaDate;
+	}
 	public PRIORITY getPriority() {
 		return priority;
 	}
