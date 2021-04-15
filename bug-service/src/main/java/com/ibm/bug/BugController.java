@@ -32,7 +32,7 @@ public class BugController {
 
 	private void validateModel(Errors bindingResult) {
 		if (bindingResult.hasErrors()) {
-			throw new IllegalArgumentException("Somethign went wrong. Plesae retry");
+			throw new IllegalArgumentException("Something went wrong. Please retry");
 		}
 	}
 
@@ -49,9 +49,8 @@ public class BugController {
 	@PutMapping("/bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
-		System.out.println(bugId);
 		bug.setId(bugId);
-		bugService.updateProject(bug);
+		bugService.updateBug(bug);
 	}
 
 }

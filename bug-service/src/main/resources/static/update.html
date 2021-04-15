@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Bug</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="update.js"></script>
+<style>
+body {
+	background-color: rgb(214, 221, 226);
+}
+
+h1 {
+	text-align: center;
+	margin-top: -40px;
+	margin-bottom: 15px;
+}
+
+table {
+	margin-top: 50px;
+}
+
+h2 {
+	text-align: center;
+	margin-top: 20px;
+	margin-left: -90px;
+}
+
+.updateBtn {
+	margin-top: 0.4em;
+	margin-bottom: 0.4em;
+}
+.searchForm {
+	width: 50%;
+	margin: 20px auto;
+}
+#bugName {
+	margin-right:5px;
+	font-size: 20px;
+}
+
+.bugLabel {
+	font-size: 20px;
+}
+.searchButton {
+	font-size: 20px;
+}
+span {
+	color: red;
+	margin-left: 4px;
+}
+
+footer {
+	position: relative;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 100px;
+}
+</style>
+
+</head>
+
+<body class="jumbotron" onload="loadBug()">
+	<h1>BUG TRACKING SYSTEM</h1>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="aboutUs.html">About
+						Us</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="form-group row searchForm">
+		<form id="bugSearchForm" class="col-sm-9 row">
+			<label for="bugName" class="col-sm-4 bugLabel">Bug Name<span>*</span></label>
+			<select class="form-control col-sm-7" id='bugName'>
+			</select>
+		</form>
+		<button type="button" id="searchBug" class="btn btn-primary col-sm-3 searchButton" onclick="getBug()">Get Bug</button>
+	</div>
+	<div>
+		<h2>Bug Details</h2>
+	</div>
+	<br>
+	<form id="bugCreateForm">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<label class="control-label col-sm-3  col-md-offset-4" for="Name">Name<span>*</span></label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='name'
+								placeholder="Name" name="name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3  col-md-offset-4" for="pwd">Priority</label>
+						<div class="col-sm-9">
+							<select name="priority" class="form-control" id='priority'>
+								<option value="LOW">LOW</option>
+								<option value="MEDIUM">MEDIUM</option>
+								<option value="HIGH">HIGH</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3  col-md-offset-4 " for="pwd">Type</label>
+						<div class="col-sm-9">
+							<select name="type" class="form-control" id='type'>
+								<option value="UNITLEVEL">UNIT-LEVEL</option>
+								<option value="SYSTEMLEVEL">SYSTEM-LEVEL</option>
+								<option value="OUTOFBOUND">OUT OF BOUND</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3  col-md-offset-4 " for="pwd">ETA
+							Date<span>*</span>
+						</label>
+						<div class="col-sm-9">
+							<input id='etaDate' type="date" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-4" for="pwd">Module<span>*</span></label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='module'
+								placeholder="Module" name="module" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-4" for="pwd">Build Version</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='buildVersion'
+								placeholder="Build Version" name="buildVersion">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-4" for="pwd">Description<span>*</span></label>
+						<div class="col-sm-9">
+							<textarea id='description' class="form-control" name="descrption"
+								rows="2" required></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Severity</label>
+						<div class="col-sm-9">
+							<select name="severity" class="form-control" id='severity'>
+								<option value="LOW">LOW</option>
+								<option value="MEDIUM">MEDIUM</option>
+								<option value="HIGH">HIGH</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Project
+							Id<span>*</span>
+						</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='projectId'
+								placeholder="Project Id" name="projectId" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Developer
+							Id<span>*</span>
+						</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='developerId'
+								placeholder="Developer Id" name="developerId" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Tester
+							Id<span>*</span>
+						</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='testerId'
+								placeholder="Tester Id" name="testerId" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Synopsis<span>*</span></label>
+						<div class="col-sm-9">
+							<textarea id='synopsis' class="form-control" name="synopsis"
+								rows="2" required></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Product<span>*</span></label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id='product'
+								placeholder="Product" name="product" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-3 col-md-offset-2" for="pwd">Status</label>
+						<div class="col-sm-9">
+							<select name="status" class="form-control" id='status'>
+								<option value="NEW">New</option>
+								<option value="ASSIGNED">Assigned</option>
+								<option value="OPEN">Open</option>
+								<option value="FIXED">Fixed</option>
+								<option value="PENDING_RETEST">Pending Retest</option>
+								<option value="RETEST">Retest</option>
+								<option value="REOPEN">Reopen</option>
+								<option value="VERIFIED">Verified</option>
+								<option value="CLOSED">Closed</option>
+								<option value="REJECTED">Rejected</option>
+								<option value="DUPLICATE">Duplicate</option>
+								<option value="DEFERRED">Deferred</option>
+								<option value="NOT_A_BUG">Not A Bug</option>
+								<option value="NEED_MORE_INFO">Need More Info</option>
+								<option value="COULDNOT_REPRODUCE">Could Not Reproduce</option>
+								<option value="WONT_FIX">Wont Fix</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" name="submittedOn" id='submittedOn'>
+	</form>
+	<button onclick="updateBug()" class="btn btn-primary btn-lg btn-block updateBtn">Update</button>
+	<!-- Footer -->
+	<div>
+		<footer class="page-footer font-small blue">
+
+			<div class="col-lg-12 col-md-12 text-center">
+				<div class="footer-copyright text-center py-3">
+					© 2021 Copyright: <a href="http://localhost:8082/index.html">Bug
+						Tracking System </a>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
