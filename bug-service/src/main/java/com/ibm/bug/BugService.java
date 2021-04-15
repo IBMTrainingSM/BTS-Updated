@@ -25,7 +25,7 @@ public class BugService {
 		return bugRepository.findById(bugId);
 	}
 
-	public void updateBug(Bug bug) {
+	public void updateProject(Bug bug) {
 		bugRepository.save(bug);
 
 	}

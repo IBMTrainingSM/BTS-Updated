@@ -12,16 +12,6 @@ public class Project {
 	private String name;
 	@Id
 	private String id;
-	@NotNull
-	private String managerId;
-	
-	public String getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(String managerId) {
-		this.managerId = managerId;
-	}
 
 	public String getName() {
 		return name;
