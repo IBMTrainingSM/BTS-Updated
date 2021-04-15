@@ -33,13 +33,11 @@ form {
 	margin: 30px auto;
 }
 
-#bugId {
-	margin-left: -40px;
+#bugName {
 	font-size: 20px;
 }
 
 .bugLabel {
-	margin-right: 40px;
 	font-size: 20px;
 }
 
@@ -58,14 +56,14 @@ span {
 }
 
 .searchButton {
-	margin-left: 30px;
+	margin-left:5px;
 	height: 40%;
 	margin-top: 30px;
 	font-size: 20px;
 }
 
 footer {
-    position:absolute;
+    position:relative;
 	bottom: 0;
 	left:50%;
 	transform:translateX(-50%);
@@ -95,8 +93,8 @@ footer {
 	</div>
 	<div class="form-group row searchForm">
 		<form id="bugSearchForm" class="col-sm-9 row">
-			<label for="bugId" class="col-sm-4 bugLabel">Bug Id<span>*</span></label>
-			<input type="text" class="form-control col-sm-8" id='bugId' required>
+			<label for="bugName" class="col-sm-4 bugLabel">Bug Name<span>*</span></label>
+			<input type="text" class="form-control col-sm-8" id='bugName' required>
 		</form>
 		<button type="button" id="searchBug"
 			class="btn btn-primary col-sm-3 searchButton" onclick="getBug()">Search</button>
@@ -115,6 +113,7 @@ footer {
 		</tbody>
 	</table>
 	<!-- Footer -->
+	<div>
 	<footer class="page-footer font-small blue">
   
      <div class="col-lg-12 col-md-12 text-center">
@@ -125,52 +124,61 @@ footer {
 		</div>
      
 	</footer>
-	<!-- Footer -->
+	</div>
+
 </body>
 <script>
 	function getBug() {
 		if (!bugSearchForm.checkValidity()) {
-			alert('Bug id is invalid');
+			alert('Bug name is invalid');
 			return;
 		}
-		let bugId = document.getElementById('bugId').value;
-		bugId = bugId.trim();
-		if (bugId) {
-			const promise = fetch('/bug/' + bugId);
+		let bugName = document.getElementById('bugName').value;
+		bugName = bugName.trim();
+		if (bugName) {
+			const promise = fetch('/bug');
 			promise.then(function(response) {
 				return response.json();
-			}).then(function(bug) {
-				if (bug) {
+			}).then(function(bugs) {
 					const table = document.getElementById('resultTable');
-					const row = document.createElement('tr');
-					const idColumn = document.createElement('td');
-					const nameColumn = document.createElement('td');
-					const priorityColumn = document.createElement('td');
-					const typeColumn = document.createElement('td');
-					const buildVersionColumn = document.createElement('td');
-					const synopsisColumn = document.createElement('td');
-					const statusColumn = document.createElement('td');
-					idColumn.append(bug.id);
-					nameColumn.append(bug.name);
-					priorityColumn.append(bug.priority);
-					typeColumn.append(bug.type);
-					buildVersionColumn.append(bug.buildVersion);
-					synopsisColumn.append(bug.synopsis);
-					statusColumn.append(bug.status);
-					row.appendChild(idColumn);
-					row.appendChild(nameColumn);
-					row.appendChild(priorityColumn);
-					row.appendChild(typeColumn);
-					row.appendChild(buildVersionColumn);
-					row.appendChild(synopsisColumn);
-					row.appendChild(statusColumn);
-					table.appendChild(row);
-				} else {
-					alert("Invalid Bug Id");
-				}
+					table.innerHTML='';
+					let found=false;
+					for(let i=0;i<bugs.length;i++){
+						const bug = bugs[i];
+						const currentBugName = bug.name;
+						if(currentBugName==bugName){
+							const row = document.createElement('tr');
+							const idColumn = document.createElement('td');
+							const nameColumn = document.createElement('td');
+							const priorityColumn = document.createElement('td');
+							const typeColumn = document.createElement('td');
+							const buildVersionColumn = document.createElement('td');
+							const synopsisColumn = document.createElement('td');
+							const statusColumn = document.createElement('td');
+							idColumn.append(bug.id);
+							nameColumn.append(bug.name);
+							priorityColumn.append(bug.priority);
+							typeColumn.append(bug.type);
+							buildVersionColumn.append(bug.buildVersion);
+							synopsisColumn.append(bug.synopsis);
+							statusColumn.append(bug.status);
+							row.appendChild(idColumn);
+							row.appendChild(nameColumn);
+							row.appendChild(priorityColumn);
+							row.appendChild(typeColumn);
+							row.appendChild(buildVersionColumn);
+							row.appendChild(synopsisColumn);
+							row.appendChild(statusColumn);
+							table.appendChild(row);
+							found=true;
+						}
+					}
+					if(!found){
+						alert("Invalid Bug Name");
+					}
 			});
 		} else {
-			alert("Invalid Bug Id");
+			alert("Invalid Bug Name");
 		}
 
 	}
