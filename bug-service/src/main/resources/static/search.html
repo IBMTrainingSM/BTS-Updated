@@ -130,47 +130,55 @@ footer {
 <script>
 	function getBug() {
 		if (!bugSearchForm.checkValidity()) {
-			alert('Bug id is invalid');
+			alert('Bug name is invalid');
 			return;
 		}
-		let bugId = document.getElementById('bugId').value;
-		bugId = bugId.trim();
-		if (bugId) {
-			const promise = fetch('/bug/' + bugId);
+		let bugName = document.getElementById('bugName').value;
+		bugName = bugName.trim();
+		if (bugName) {
+			const promise = fetch('/bug');
 			promise.then(function(response) {
 				return response.json();
-			}).then(function(bug) {
-				if (bug) {
+			}).then(function(bugs) {
 					const table = document.getElementById('resultTable');
-					const row = document.createElement('tr');
-					const idColumn = document.createElement('td');
-					const nameColumn = document.createElement('td');
-					const priorityColumn = document.createElement('td');
-					const typeColumn = document.createElement('td');
-					const buildVersionColumn = document.createElement('td');
-					const synopsisColumn = document.createElement('td');
-					const statusColumn = document.createElement('td');
-					idColumn.append(bug.id);
-					nameColumn.append(bug.name);
-					priorityColumn.append(bug.priority);
-					typeColumn.append(bug.type);
-					buildVersionColumn.append(bug.buildVersion);
-					synopsisColumn.append(bug.synopsis);
-					statusColumn.append(bug.status);
-					row.appendChild(idColumn);
-					row.appendChild(nameColumn);
-					row.appendChild(priorityColumn);
-					row.appendChild(typeColumn);
-					row.appendChild(buildVersionColumn);
-					row.appendChild(synopsisColumn);
-					row.appendChild(statusColumn);
-					table.appendChild(row);
-				} else {
-					alert("Invalid Bug Id");
-				}
+					table.innerHTML='';
+					let found=false;
+					for(let i=0;i<bugs.length;i++){
+						const bug = bugs[i];
+						const currentBugName = bug.name;
+						if(currentBugName==bugName){
+							const row = document.createElement('tr');
+							const idColumn = document.createElement('td');
+							const nameColumn = document.createElement('td');
+							const priorityColumn = document.createElement('td');
+							const typeColumn = document.createElement('td');
+							const buildVersionColumn = document.createElement('td');
+							const synopsisColumn = document.createElement('td');
+							const statusColumn = document.createElement('td');
+							idColumn.append(bug.id);
+							nameColumn.append(bug.name);
+							priorityColumn.append(bug.priority);
+							typeColumn.append(bug.type);
+							buildVersionColumn.append(bug.buildVersion);
+							synopsisColumn.append(bug.synopsis);
+							statusColumn.append(bug.status);
+							row.appendChild(idColumn);
+							row.appendChild(nameColumn);
+							row.appendChild(priorityColumn);
+							row.appendChild(typeColumn);
+							row.appendChild(buildVersionColumn);
+							row.appendChild(synopsisColumn);
+							row.appendChild(statusColumn);
+							table.appendChild(row);
+							found=true;
+						}
+					}
+					if(!found){
+						alert("Invalid Bug Name");
+					}
 			});
 		} else {
-			alert("Invalid Bug Id");
+			alert("Invalid Bug Name");
 		}
 
 	}
