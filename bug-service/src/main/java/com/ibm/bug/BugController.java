@@ -41,11 +41,16 @@ public class BugController {
 		return bugService.getBugs();
 	}
 
-	@GetMapping("/bug/{id}")
-	Optional<Bug> getBug(@PathVariable("id") String bugId) {
-		return bugService.getBug(bugId);
+//	@GetMapping("/bug/{id}")
+//	Optional<Bug> getBug(@PathVariable("id") String bugId) {
+//		return bugService.getBug(bugId);
+//	}
+	
+	@GetMapping("/bug/{name}")
+	Optional<Bug> getBugByName(@PathVariable("name") String bugName) {
+		return bugService.getBugByName(bugName);
 	}
-
+	
 	@PutMapping("/bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
