@@ -70,7 +70,7 @@ footer {
 
 </head>
 
-<body class="jumbotron" onload="loadBug()">
+<body class="jumbotron">
 	<h1>BUG TRACKING SYSTEM</h1>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -89,8 +89,7 @@ footer {
 	<div class="form-group row searchForm">
 		<form id="bugSearchForm" class="col-sm-9 row">
 			<label for="bugName" class="col-sm-4 bugLabel">Bug Name<span>*</span></label>
-			<select class="form-control col-sm-7" id='bugName'>
-			</select>
+			<input class="form-control col-sm-7" id='bugName'>
 		</form>
 		<button type="button" id="searchBug" class="btn btn-primary col-sm-3 searchButton" onclick="getBug()">Get Bug</button>
 	</div>
@@ -98,7 +97,7 @@ footer {
 		<h2>Bug Details</h2>
 	</div>
 	<br>
-	<form id="bugCreateForm">
+	<form id="bugUpdateForm">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -238,6 +237,7 @@ footer {
 			</div>
 		</div>
 		<input type="hidden" name="submittedOn" id='submittedOn'>
+		<input type="hidden" name="bugId" id='bugId'>
 	</form>
 	<button onclick="updateBug()" class="btn btn-primary btn-lg btn-block updateBtn">Update</button>
 	<!-- Footer -->

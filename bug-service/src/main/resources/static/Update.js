@@ -1,38 +1,42 @@
-function loadBug(){
-	const promise = fetch('/bug');
-		promise.then(function(response){
-			return response.json();
-		})
-		.then(function(bugs){
-			const selectName = document.getElementById('bugName');
-			for(let i=0;i<bugs.length;i++){
-				const currentBug = bugs[i];
-				const option = document.createElement('option');
-				option.setAttribute("value",currentBug.id);
-				option.append(currentBug.name);
-				selectName.appendChild(option);
-			}
-        })
-}
 function getBug(){
-		let bugId=document.getElementById('bugName').value;
-		if (!bugSearchForm.checkValidity()) {
-				alert('Bug id is invalid');
-				return;
-			}
-		bugId = bugId.trim();
-		if (bugId) {
-			const promise = fetch('/bug/' + bugId);
+	if (!bugSearchForm.checkValidity()) {
+			alert('Bug name is invalid');
+			return;
+		}
+		let bugName = document.getElementById('bugName').value;
+		bugName = bugName.trim();
+		if (bugName) {
+			const promise = fetch('/bug');
 			promise.then(function(response) {
 				return response.json();
-			}).then(function(bug) {
-				if (bug) {
+			}).then(function(bugs) {
+					let found=false;
+					for(let i=0;i<bugs.length;i++){
+						const bug = bugs[i];
+						const currentBugName = bug.name;
+						const currentBugStatus = bug.status;
+						if((currentBugName==bugName) && (currentBugStatus!='DUPLICATE')){
+							loadBug(bug);
+							found=true;
+							break;
+						}
+					}
+					if(!found){
+						alert("Invalid Bug Name");
+					}
+			});
+		} else {
+			alert("Invalid Bug Name");
+		}
+}
+function loadBug(bug){
 					let etaDate = bug.etaDate;
 					if(etaDate){
 						let finalEtaDate = etaDate.split('T')[0];
 						document.getElementById('etaDate').value = finalEtaDate;
 					}
 					document.getElementById('name').value = bug.name;
+					document.getElementById('bugId').value = bug.id;
 					document.getElementById('priority').value = bug.priority;
 					document.getElementById('type').value = bug.type;
 					document.getElementById('severity').value = bug.severity;
@@ -46,14 +50,6 @@ function getBug(){
 					document.getElementById('synopsis').value = bug.synopsis;
 					document.getElementById('product').value = bug.product;
 					document.getElementById('status').value = bug.status;
-				} else {
-					alert("Invalid Bug Id");
-				}
-			});
-		} else {
-			alert("Invalid Bug Id");
-		}
-
 }
 function updateBug(){
 	function success(response) {
@@ -66,7 +62,7 @@ function updateBug(){
 		}
 		const bugForm = document.getElementById('bugCreateForm');
 
-		if (!bugForm.checkValidity()) {
+		if (!bugUpdateForm.checkValidity()) {
 			alert('form is invalid');
 			return;
 		}
@@ -82,7 +78,7 @@ function updateBug(){
 			alert("Synopsis should be between 10 and 50 characters");
 			return;
 		}
-		const bugId=document.getElementById('bugName').value;
+		const bugId=document.getElementById('bugId').value;
 		const promise = fetch('/bug/'+bugId, {
 			method : 'PUT',
 			headers : {
