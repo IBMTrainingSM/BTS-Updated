@@ -25,7 +25,7 @@ public class BugService {
 		return bugRepository.findById(bugId);
 	}
 
-	public Optional<Bug> getBugByName(String bugName) {
+	public List<Bug> getBugByName(String bugName) {
 		return bugRepository.findByName(bugName);
 	}
 
