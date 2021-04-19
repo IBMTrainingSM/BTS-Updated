@@ -1,7 +1,6 @@
 package com.ibm.bug;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -41,11 +40,21 @@ public class BugController {
 		return bugService.getBugs();
 	}
 
-	@GetMapping("/bug/{id}")
-	Optional<Bug> getBug(@PathVariable("id") String bugId) {
-		return bugService.getBug(bugId);
+//	@GetMapping("/bug/{id}")
+//	Optional<Bug> getBug(@PathVariable("id") String bugId) {
+//		return bugService.getBug(bugId);
+//	}
+	
+	@GetMapping("/bug/name/{name}")
+	List<Bug> getBugByName(@PathVariable("name") String bugName) {
+		return bugService.getBugByName(bugName);
 	}
-
+	
+	@GetMapping("/bug/status/{status}")
+	List<Bug> getBugByStatus(@PathVariable("status") String status) {
+		return bugService.getBugByStatus(status);
+	}
+	
 	@PutMapping("/bug/{id}")
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
