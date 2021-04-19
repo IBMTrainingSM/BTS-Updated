@@ -29,6 +29,10 @@ public class BugService {
 		return bugRepository.findByName(bugName);
 	}
 
+	public List<Bug> getBugByStatus(String status) {
+		return bugRepository.findByStatus(status);
+	}
+
 	public void updateBug(Bug bug) {
 		int valid = 0;
 		String bugId = bug.getId();
