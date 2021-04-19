@@ -1,7 +1,6 @@
 package com.ibm.bug;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -47,7 +46,7 @@ public class BugController {
 //	}
 	
 	@GetMapping("/bug/{name}")
-	Optional<Bug> getBugByName(@PathVariable("name") String bugName) {
+	List<Bug> getBugByName(@PathVariable("name") String bugName) {
 		return bugService.getBugByName(bugName);
 	}
 	
