@@ -54,9 +54,6 @@ public class Bug {
 		return etaDate;
 	}
 	public void setEtaDate(Date etaDate) {
-		if(etaDate.compareTo(new Date())<0) {
-			throw new IllegalArgumentException("etaDate cannot be a past date");
-		}
 		this.etaDate = etaDate;
 	}
 	public PRIORITY getPriority() {
