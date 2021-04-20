@@ -1,5 +1,6 @@
 package com.ibm.bug;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,10 @@ public class BugService {
 	BugRepository bugRepository;
 
 	public String createBug(Bug bug) {
+		Date inputDate = bug.getEtaDate();
+		if(inputDate.compareTo(new Date())<0) {
+			throw new StatusIllegalArgumentException("ETA Date cannot be a past date");
+		}
 		Bug savedBug = bugRepository.save(bug);
 		return savedBug.getId();
 	}
@@ -76,7 +81,7 @@ public class BugService {
 		if (valid == 1) {
 			bugRepository.save(bug);
 		} else {
-			throw new IllegalArgumentException("Invalid status");
+			throw new StatusIllegalArgumentException("Invalid status");
 		}
 
 	}
