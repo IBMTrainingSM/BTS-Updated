@@ -77,6 +77,38 @@ public class BugService {
 		} else if (oldStatus.equals(STATUS.CLOSED) && newStatus.equals(STATUS.CLOSED)) {
 			valid = 1;
 		}
+		else if (oldStatus.equals(STATUS.NEW) && newStatus.equals(STATUS.NEW)) {
+			valid = 1;
+		}
+		else if (oldStatus.equals(STATUS.ASSIGNED) && newStatus.equals(STATUS.ASSIGNED)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.OPEN) && newStatus.equals(STATUS.OPEN)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.FIXED) && newStatus.equals(STATUS.FIXED)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.PENDING_RETEST) && newStatus.equals(STATUS.PENDING_RETEST)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.RETEST) && newStatus.equals(STATUS.RETEST)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.REOPEN) && newStatus.equals(STATUS.REOPEN)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.VERIFIED) && newStatus.equals(STATUS.VERIFIED)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.WONT_FIX) && newStatus.equals(STATUS.WONT_FIX)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.REJECTED) && newStatus.equals(STATUS.REJECTED)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.DUPLICATE) && newStatus.equals(STATUS.DUPLICATE)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.DEFERRED) && newStatus.equals(STATUS.DEFERRED)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.NOT_A_BUG) && newStatus.equals(STATUS.NOT_A_BUG)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.NEED_MORE_INFO) && newStatus.equals(STATUS.NEED_MORE_INFO)) {
+			valid = 1;
+		}else if (oldStatus.equals(STATUS.COULDNOT_REPRODUCE) && newStatus.equals(STATUS.COULDNOT_REPRODUCE)) {
+			valid = 1;
+		}
 		if (valid == 1) {
 			bugRepository.save(bug);
 		} else {
