@@ -26,11 +26,15 @@ public class BugService {
 	}
 
 	public List<Bug> getBugByName(String bugName) {
-		return bugRepository.findByName(bugName);
+		return bugRepository.findByNameIgnoreCase(bugName);
 	}
 
-	public List<Bug> getBugByStatus(String status) {
+	public List<Bug> getBugByStatus(STATUS status) {
 		return bugRepository.findByStatus(status);
+	}
+	
+	public List<Bug> getBugByNameAndStatus(STATUS status, String bugName) {
+		return bugRepository.findByStatusAndNameIgnoreCase(status, bugName);
 	}
 
 	public void updateBug(Bug bug) {
@@ -88,5 +92,6 @@ public class BugService {
 	public void setBugRepository(BugRepository bugRepository) {
 		this.bugRepository = bugRepository;
 	}
+
 
 }

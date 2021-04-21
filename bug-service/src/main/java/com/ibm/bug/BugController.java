@@ -1,8 +1,10 @@
 package com.ibm.bug;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,10 +42,10 @@ public class BugController {
 		return bugService.getBugs();
 	}
 
-//	@GetMapping("/bug/{id}")
-//	Optional<Bug> getBug(@PathVariable("id") String bugId) {
-//		return bugService.getBug(bugId);
-//	}
+	@GetMapping("/bug/{id}")
+	Optional<Bug> getBug(@PathVariable("id") String bugId) {
+		return bugService.getBug(bugId);
+	}
 	
 	@GetMapping("/bug/name/{name}")
 	List<Bug> getBugByName(@PathVariable("name") String bugName) {
@@ -51,8 +53,13 @@ public class BugController {
 	}
 	
 	@GetMapping("/bug/status/{status}")
-	List<Bug> getBugByStatus(@PathVariable("status") String status) {
+	List<Bug> getBugByStatus(@PathVariable("status") STATUS status) {
 		return bugService.getBugByStatus(status);
+	}
+	
+	@GetMapping("/bug/search/{name}")
+	List<Bug> getBugByNameAndStatus(@PathParam("status") STATUS status,@PathVariable("name") String bugName) {
+		return bugService.getBugByNameAndStatus(status,bugName);
 	}
 	
 	@PutMapping("/bug/{id}")
