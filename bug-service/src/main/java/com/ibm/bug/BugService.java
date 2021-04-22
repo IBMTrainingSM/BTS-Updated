@@ -36,6 +36,10 @@ public class BugService {
 	public List<Bug> getBugByNameAndStatus(STATUS status, String bugName) {
 		return bugRepository.findByStatusAndNameIgnoreCase(status, bugName);
 	}
+	
+	public void deleteBug(String bugId) {
+		bugRepository.deleteById(bugId);
+	}
 
 	public void updateBug(Bug bug) {
 		int valid = 0;
