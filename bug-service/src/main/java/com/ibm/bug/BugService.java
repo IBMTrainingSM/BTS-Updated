@@ -1,5 +1,6 @@
 package com.ibm.bug;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -120,7 +121,47 @@ public class BugService {
 		}
 
 	}
+	
+	public void updateBugNew(Bug bug) {
+		STATUS status = bug.getStatus();
+		Optional<Bug> oldBug = bugRepository.findById(bug.getId());
+		oldBug.ifPresent(oldbug -> {
+			STATUS oldstatus = oldbug.getStatus();
+			HashMap<STATUS, STATUS[]> hmap = new HashMap<STATUS, STATUS[]>();
+			hmap.put(STATUS.NEW, new STATUS[] { STATUS.NEW, STATUS.ASSIGNED });
+			hmap.put(STATUS.ASSIGNED, new STATUS[] { STATUS.ASSIGNED,STATUS.OPEN, STATUS.DEFERRED, STATUS.DUPLICATE, STATUS.REJECTED, STATUS.NOT_A_BUG });
+			hmap.put(STATUS.OPEN, new STATUS[] { STATUS.OPEN, STATUS.FIXED, STATUS.NEED_MORE_INFO, STATUS.COULDNOT_REPRODUCE, STATUS.WONT_FIX});
+			hmap.put(STATUS.FIXED, new STATUS[] { STATUS.FIXED, STATUS.PENDING_RETEST });
+			hmap.put(STATUS.PENDING_RETEST, new STATUS[] { STATUS.PENDING_RETEST, STATUS.RETEST });
+			hmap.put(STATUS.RETEST, new STATUS[] { STATUS.RETEST, STATUS.VERIFIED, STATUS.REOPEN });
+			hmap.put(STATUS.REOPEN, new STATUS[] { STATUS.REOPEN, STATUS.ASSIGNED });
+			hmap.put(STATUS.VERIFIED, new STATUS[] { STATUS.VERIFIED, STATUS.CLOSED });
+			hmap.put(STATUS.CLOSED, new STATUS[] { STATUS.CLOSED });
+			hmap.put(STATUS.NEED_MORE_INFO, new STATUS[] { STATUS.NEED_MORE_INFO, STATUS.DEFERRED });
+			hmap.put(STATUS.COULDNOT_REPRODUCE, new STATUS[] { STATUS.COULDNOT_REPRODUCE, STATUS.CLOSED });
+			hmap.put(STATUS.WONT_FIX, new STATUS[] { STATUS.WONT_FIX, STATUS.CLOSED });
+			hmap.put(STATUS.DEFERRED, new STATUS[] { STATUS.DEFERRED, STATUS.ASSIGNED });
+			hmap.put(STATUS.NOT_A_BUG, new STATUS[] { STATUS.NOT_A_BUG, STATUS.CLOSED });
+			hmap.put(STATUS.REJECTED, new STATUS[] { STATUS.REJECTED, STATUS.CLOSED });
+			hmap.put(STATUS.DUPLICATE, new STATUS[] { STATUS.DUPLICATE, STATUS.CLOSED });
+			
+			int i = 0;
+			String message = "-";
+			for (i = 0; i < hmap.get(oldstatus).length; i++) {
+				message += " ";
+				if (status == hmap.get(oldstatus)[i]) {
+					break;
+				}
+				message += hmap.get(oldstatus)[i];
+			}
+			if (hmap.get(oldstatus).length == i && !(oldstatus == status)) {
+				throw new StatusIllegalArgumentException("STATUS CAN ONLY BE " + message);
+			}
+			bugRepository.save(bug);
 
+		});
+
+	}
 	public BugRepository getBugRepository() {
 		return bugRepository;
 	}
