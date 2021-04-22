@@ -67,7 +67,7 @@ public class BugController {
 	void updateBug(@RequestBody @Valid Bug bug, BindingResult bindingResult, @PathVariable("id") String bugId) {
 		validateModel(bindingResult);
 		bug.setId(bugId);
-		bugService.updateBug(bug);
+		bugService.updateBugNew(bug);
 	}
 	
 	@DeleteMapping("/bug/{id}")
