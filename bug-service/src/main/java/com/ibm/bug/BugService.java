@@ -22,12 +22,12 @@ public class BugService {
 		return bugRepository.findAll();
 	}
 
-	public Optional<Bug> getBug(String bugId) {
-		return bugRepository.findById(bugId);
+	public List<Bug> getBugByPartialName(String bugName) {
+		return bugRepository.findByNameIgnoreCase(bugName);
 	}
 
 	public List<Bug> getBugByName(String bugName) {
-		return bugRepository.findByNameIgnoreCase(bugName);
+		return bugRepository.getByNameIgnoreCase(bugName);
 	}
 
 	public List<Bug> getBugByStatus(STATUS status) {
