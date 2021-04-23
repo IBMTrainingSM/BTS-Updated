@@ -136,11 +136,11 @@ public class DummyBugRepository implements BugRepository {
 	}
 
 
-	@Override
-	public List<Bug> findByNameIgnoreCase(String bugName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<Bug> findByNameIgnoreCase(String bugName) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<Bug> findByStatus(STATUS status) {
@@ -150,6 +150,18 @@ public class DummyBugRepository implements BugRepository {
 
 	@Override
 	public List<Bug> findByStatusAndNameIgnoreCase(STATUS status, String bugName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bug> findByNameIgnoreCase(String buName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Bug> getByNameIgnoreCase(String bugName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
