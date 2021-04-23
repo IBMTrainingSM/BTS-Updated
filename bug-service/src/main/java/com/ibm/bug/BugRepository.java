@@ -12,6 +12,7 @@ public interface BugRepository extends MongoRepository<Bug, String> {
 	List<Bug> getByNameIgnoreCase(String bugName);
 
 	List<Bug> findByStatus(STATUS status);
-
+	
+	@Query("{status: ?0,name : {$regex : ?1,'$options':'i'}}")
 	List<Bug> findByStatusAndNameIgnoreCase(STATUS status, String name);
 }
